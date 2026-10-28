@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Don Julio campaign</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+*{text-transform:lowercase !important}
+body{margin:0;background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif}
+a{color:#17140F}a:hover{color:#7A1F2B}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
+.cols{column-gap:14px;columns:5 200px;margin-top:28px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:12px}
+.grid4 .tile{margin:0}
+.cols .tile img{margin:0}
+.lead{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px}
+.lead img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px}
+.lead + .cols{margin-top:14px}
+.lead.one{grid-template-columns:minmax(0,460px)}
+.lead.one img{aspect-ratio:auto;height:auto;object-fit:contain}
+.hide{display:none}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:1000px;gap:28px;align-items:start;margin-top:28px}
+.duo-hero{display:block;width:100%;height:auto;border-radius:2px}
+.stack{position:relative;width:100%;aspect-ratio:4/5;background:transparent}
+.fr{position:absolute;width:70%;height:auto;border:5px solid #FAF8F4;box-sizing:border-box;box-shadow:0 6px 18px rgba(23,20,15,.28)}
+@keyframes show{from{opacity:0}to{opacity:1}}
+.n0{left:2%;top:2%;animation:show .01s linear 0.00s both,f0 5.4s linear infinite}
+.n1{left:26%;top:6%;animation:show .01s linear 0.90s both,f1 5.4s linear infinite}
+.n2{left:4%;top:14%;animation:show .01s linear 1.80s both,f2 5.4s linear infinite}
+.n3{left:27%;top:20%;animation:show .01s linear 2.70s both,f3 5.4s linear infinite}
+.n4{left:8%;top:27%;animation:show .01s linear 3.60s both,f4 5.4s linear infinite}
+.n5{left:24%;top:29%;animation:show .01s linear 4.50s both,f5 5.4s linear infinite}
+@keyframes f0{0.00%{transform:rotate(-3deg) scale(1);z-index:6}3.00%{transform:rotate(-3deg) scale(1);z-index:6}16.66%{transform:rotate(-3deg) scale(1);z-index:6}16.67%{transform:rotate(-3deg) scale(1);z-index:5}33.32%{transform:rotate(-3deg) scale(1);z-index:5}33.33%{transform:rotate(-3deg) scale(1);z-index:4}49.99%{transform:rotate(-3deg) scale(1);z-index:4}50.00%{transform:rotate(-3deg) scale(1);z-index:3}66.66%{transform:rotate(-3deg) scale(1);z-index:3}66.67%{transform:rotate(-3deg) scale(1);z-index:2}83.32%{transform:rotate(-3deg) scale(1);z-index:2}83.33%{transform:rotate(-3deg) scale(1);z-index:1}100.00%{transform:rotate(-3deg) scale(1);z-index:1}}
+@keyframes f1{0.00%{transform:rotate(3deg) scale(1);z-index:1}16.66%{transform:rotate(3deg) scale(1);z-index:1}16.67%{transform:rotate(3deg) scale(1);z-index:6}19.67%{transform:rotate(3deg) scale(1);z-index:6}33.32%{transform:rotate(3deg) scale(1);z-index:6}33.33%{transform:rotate(3deg) scale(1);z-index:5}49.99%{transform:rotate(3deg) scale(1);z-index:5}50.00%{transform:rotate(3deg) scale(1);z-index:4}66.66%{transform:rotate(3deg) scale(1);z-index:4}66.67%{transform:rotate(3deg) scale(1);z-index:3}83.32%{transform:rotate(3deg) scale(1);z-index:3}83.33%{transform:rotate(3deg) scale(1);z-index:2}100.00%{transform:rotate(3deg) scale(1);z-index:2}}
+@keyframes f2{0.00%{transform:rotate(-2deg) scale(1);z-index:2}16.66%{transform:rotate(-2deg) scale(1);z-index:2}16.67%{transform:rotate(-2deg) scale(1);z-index:1}33.32%{transform:rotate(-2deg) scale(1);z-index:1}33.33%{transform:rotate(-2deg) scale(1);z-index:6}36.33%{transform:rotate(-2deg) scale(1);z-index:6}49.99%{transform:rotate(-2deg) scale(1);z-index:6}50.00%{transform:rotate(-2deg) scale(1);z-index:5}66.66%{transform:rotate(-2deg) scale(1);z-index:5}66.67%{transform:rotate(-2deg) scale(1);z-index:4}83.32%{transform:rotate(-2deg) scale(1);z-index:4}83.33%{transform:rotate(-2deg) scale(1);z-index:3}100.00%{transform:rotate(-2deg) scale(1);z-index:3}}
+@keyframes f3{0.00%{transform:rotate(4deg) scale(1);z-index:3}16.66%{transform:rotate(4deg) scale(1);z-index:3}16.67%{transform:rotate(4deg) scale(1);z-index:2}33.32%{transform:rotate(4deg) scale(1);z-index:2}33.33%{transform:rotate(4deg) scale(1);z-index:1}49.99%{transform:rotate(4deg) scale(1);z-index:1}50.00%{transform:rotate(4deg) scale(1);z-index:6}53.00%{transform:rotate(4deg) scale(1);z-index:6}66.66%{transform:rotate(4deg) scale(1);z-index:6}66.67%{transform:rotate(4deg) scale(1);z-index:5}83.32%{transform:rotate(4deg) scale(1);z-index:5}83.33%{transform:rotate(4deg) scale(1);z-index:4}100.00%{transform:rotate(4deg) scale(1);z-index:4}}
+@keyframes f4{0.00%{transform:rotate(-4deg) scale(1);z-index:4}16.66%{transform:rotate(-4deg) scale(1);z-index:4}16.67%{transform:rotate(-4deg) scale(1);z-index:3}33.32%{transform:rotate(-4deg) scale(1);z-index:3}33.33%{transform:rotate(-4deg) scale(1);z-index:2}49.99%{transform:rotate(-4deg) scale(1);z-index:2}50.00%{transform:rotate(-4deg) scale(1);z-index:1}66.66%{transform:rotate(-4deg) scale(1);z-index:1}66.67%{transform:rotate(-4deg) scale(1);z-index:6}69.67%{transform:rotate(-4deg) scale(1);z-index:6}83.32%{transform:rotate(-4deg) scale(1);z-index:6}83.33%{transform:rotate(-4deg) scale(1);z-index:5}100.00%{transform:rotate(-4deg) scale(1);z-index:5}}
+@keyframes f5{0.00%{transform:rotate(2deg) scale(1);z-index:5}16.66%{transform:rotate(2deg) scale(1);z-index:5}16.67%{transform:rotate(2deg) scale(1);z-index:4}33.32%{transform:rotate(2deg) scale(1);z-index:4}33.33%{transform:rotate(2deg) scale(1);z-index:3}49.99%{transform:rotate(2deg) scale(1);z-index:3}50.00%{transform:rotate(2deg) scale(1);z-index:2}66.66%{transform:rotate(2deg) scale(1);z-index:2}66.67%{transform:rotate(2deg) scale(1);z-index:1}83.32%{transform:rotate(2deg) scale(1);z-index:1}83.33%{transform:rotate(2deg) scale(1);z-index:6}86.33%{transform:rotate(2deg) scale(1);z-index:6}100.00%{transform:rotate(2deg) scale(1);z-index:6}}
+.duo.land{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1100px}
+.duo.land .stack{aspect-ratio:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+.duo.land .fr.m0{grid-column:1;grid-row:1 / span 2}
+.duo.land .fr.m1{grid-column:2;grid-row:1}
+.duo.land .fr.m2{grid-column:2;grid-row:2}
+.duo.land.withvid{grid-template-columns:1.27fr 1.33fr .56fr;max-width:none;gap:28px}
+.duo .tile.vid{margin:0}
+.duo.nostack .stack{display:none}
+.duo.land.withvid.nostack{grid-template-columns:2.55fr 1fr}
+.duo.nostack .duo-hero{display:none}
+.duo.nostack .duo-wide{grid-column:1;grid-row:1}
+.duo.nostack .tile.vid{grid-column:2;grid-row:1}
+@media (max-width:900px){.duo.land.withvid.nostack{grid-template-columns:minmax(0,1fr)}.duo.nostack .duo-wide,.duo.nostack .tile.vid{grid-column:1;grid-row:auto}}
+.duo-wide{display:flex;flex-direction:column;gap:14px;grid-column:1 / span 2;min-width:0}
+@media (max-width:900px){.duo.land.withvid{grid-template-columns:minmax(0,1fr)}.duo-wide{grid-column:1}}
+.duo.land .fr{position:static;width:100%;height:auto;border:0;box-shadow:none;border-radius:2px;opacity:1;animation:none;transform:none}
+@media (max-width:900px){.duo.land{grid-template-columns:minmax(0,1fr)}}
+.m0{left:2%;top:2%;width:76%;animation:show .01s linear 0s both,g0 2.4s linear infinite}
+.m1{left:22%;top:30%;width:76%;animation:show .01s linear 1.2s both,g1 2.4s linear infinite}
+@keyframes g0{0%,49.99%{transform:rotate(-3deg);z-index:2}50%,100%{transform:rotate(-3deg);z-index:1}}
+@keyframes g1{0%,49.99%{transform:rotate(3deg);z-index:1}50%,100%{transform:rotate(3deg);z-index:2}}
+@media (prefers-reduced-motion:reduce){.fr{animation:none !important;opacity:1}}
+@media (max-width:900px){.duo{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.lead{grid-template-columns:minmax(0,1fr)}}
+.cols img{display:block;width:100%;height:auto;margin:0 0 14px;break-inside:avoid;border-radius:2px}
+.tile.vid{box-shadow:0 0 0 8px #FAF8F4,0 0 0 9px #17140F;margin:9px 9px 23px;overflow:visible}
+.split{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,3fr);gap:28px;align-items:start;margin-top:28px}
+.split .tile.vid{margin:0}
+.collage{display:flex;flex-direction:column;gap:14px;min-width:0}
+.crow{display:flex;gap:14px;align-items:flex-start}
+.crow img{display:block;min-width:0;height:auto;border-radius:2px}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
+.mix{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:28px}
+.mix .tile{aspect-ratio:auto;grid-row:span 2;margin:0;min-height:240px}
+.mix img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 30%;border-radius:2px}
+@media (max-width:900px){.mix{grid-template-columns:repeat(2,minmax(0,1fr))}.mix .tile{grid-row:auto;aspect-ratio:9/16}}
+.tile{break-inside:avoid;margin:0 0 14px;position:relative;display:block;border-radius:2px;overflow:hidden}
+.tile:hover{outline:3px solid #17140F}
+.a916{aspect-ratio:9/16}.a11{aspect-ratio:1/1}.a169{aspect-ratio:16/9}
+.c0{background:#17140F;color:#EFEBE4}.c1{background:#7A1F2B;color:#F4EFE6}.c2{background:#DDD6CA;color:#17140F}.c3{background:#3A342D;color:#EFEBE4}
+.pill{display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:10px 18px;min-height:24px;border:1px solid #17140F;border-radius:999px;text-decoration:none;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#EFEBE4}
+.pill:hover{background:#7A1F2B;color:#F4EFE6}
+a.tile{text-decoration:none}
+a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#17140F}
+</style>
+
+</head>
+<body>
+
+
+<div style="max-width: 1440px; margin: 0 auto; padding: 24px 32px 0; box-sizing: border-box; position: relative">
+
+<div class="mono" style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;margin:-8px 0 0 -20px;font-size:14px;text-decoration:none;position:relative;z-index:10;cursor:pointer">← Orli Rein</a>
+<span>Client 01 of 08</span>
+</div>
+
+<h1 class="disp" style="margin: 24px 0 0; font-size: clamp(56px, 15vw, 220px); line-height: 0.86; text-transform: uppercase; letter-spacing: -0.02em">Don Julio</h1>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px 48px; margin-top: 40px; padding: 20px 0; border-top: 1px solid #17140F; border-bottom: 1px solid #17140F">
+<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Client</div><div style="margin-top: 6px; font-size: 18px">Don Julio</div></div>
+<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">My role</div><div style="margin-top: 6px; font-size: 18px">social producer, dp, video editor</div></div>
+<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Agency role</div><div style="margin-top: 6px; font-size: 18px">Global Social Agency of Record</div></div>
+</div>
+
+<div class="mono" style="color: #6A6258; margin-top: 32px">Highlighted campaigns</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px">
+
+<a class="pill" href="#met">Met Gala</a>
+
+<a class="pill" href="#gou">194gou (194구)</a>
+
+<a class="pill" href="#sus">Sustainability</a>
+
+<a class="pill" href="#lto">70 Cristalino LTO</a>
+
+<a class="pill" href="#wc">World Cup</a>
+
+</div>
+</div>
+
+<div style="max-width: 1440px; margin: 0 auto; padding: 24px 32px 64px; box-sizing: border-box">
+
+<section id="met" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">Met Gala</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Fashion’s biggest night. Willy Chavarría x Don Julio hosted the 2025 Met Gala after-party at The Mark Hotel, with hot dog and tequila pairings.</p>
+</div>
+
+
+<div class="split">
+
+<a class="tile a916 vid c0" href="#met" target="_self" rel="noopener">
+
+
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Willy's Essentials</span>
+
+</a>
+
+
+<div class="collage">
+
+<div class="crow">
+
+<img src="assets/d05795036707e06f35fe3d3c7f8c6397.jpg" alt="Met Gala after-party, pinstripe portrait" style="flex: 0.71 1 0%">
+
+<img src="assets/a35f4553947deda6698b7a88acaea363.jpg" alt="Met Gala after-party, rings and 1942 bottle" style="flex: 0.663 1 0%">
+
+<img src="assets/b569ee6066b35d39f5c4e2da73ee7d25.jpg" alt="Met Gala after-party, full look, lace suit" style="flex: 0.666 1 0%">
+
+</div>
+
+<div class="crow">
+
+<img src="assets/2df6eb19cc0cd66ce40a7b5f90099639.jpg" alt="Met Gala after-party, 1942 bottle on ice" style="flex: 0.666 1 0%">
+
+<img src="assets/06806568a67ee797b518b46992589eac.jpg" alt="Met Gala after-party, red curtain portrait" style="flex: 0.814 1 0%">
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="gou" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">194gou (194구)</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Peggy Gou x Don Julio 1942: one limited-edition bottle, 194구, from the streets to the screen. Gou big or go home.</p>
+</div>
+
+<div class="lead">
+
+<img src="assets/40c8fdfdc7ff48686a8c79133b9403ac.gif" alt="194gou pop-up, animated poster">
+
+<img src="assets/b6db852aa0c2f5a448942f12efbddf18.gif" alt="194gou mural, animated logo">
+
+</div>
+
+
+<div class="hide">
+
+
+</div>
+</section>
+
+<section id="sus" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">Sustainability</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Sustainability, told through education and art. Partnered with Mexican artists to share how Don Julio is made in the highlands of Jalisco.</p>
+</div>
+
+
+<div class="cols">
+
+<a class="tile a916 c2" href="#sus" target="_self" rel="noopener">
+
+
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Earth Day</span>
+
+</a>
+
+<a class="tile a916 c0" href="#sus" target="_self" rel="noopener">
+
+
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">World Environment Day, cut 1</span>
+
+</a>
+
+<a class="tile a916 c1" href="#sus" target="_self" rel="noopener">
+
+
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">World Environment Day, cut 2</span>
+
+</a>
+
+
+</div>
+</section>
+
+<section id="lto" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">70 Cristalino LTO</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">A new Willy Chavarría artist edition bottle, inspired by Día de Muertos. We launched it at NYFW with a wall of 3,000 red roses, free to take home.</p>
+</div>
+
+
+<div class="duo land withvid nostack">
+
+<div class="stack">
+
+</div>
+
+<a class="tile a916 vid c0" href="#lto" rel="noopener">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Rose Wall, master</span>
+</a>
+
+
+<div class="duo-wide">
+
+<div class="crow">
+
+<img src="assets/0bd6351e0492acf8a80b2290a0a66f61.jpg" alt="70 Cristalino rose wall at NYFW" style="flex: 1.263 1 0%">
+
+<img src="assets/011279f402c3c73410b123f7366d945b.jpg" alt="Two guests with roses at the 70 Cristalino wall" style="flex: 1.5 1 0%">
+
+</div>
+
+<div class="crow">
+
+<img src="assets/f0835ed24531f5df969480ae89b147eb.jpg" alt="Guest in a Willy Chavarría tee holding the 70 Cristalino bottle" style="flex: 1.5 1 0%">
+
+<img src="assets/8dc9bbdadb6d2a97a77e58c013ce2b71.jpg" alt="Portrait in a floral suit with the 70 Cristalino bottle" style="flex: 1.5 1 0%">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hide">
+
+
+</div>
+</section>
+
+<section id="wc" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">World Cup</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Official Sponsor of the FIFA World Cup 2026, with a special 1942 edition bottle.</p>
+</div>
+
+
+<div class="duo">
+<img class="duo-hero" src="assets/9f7d9bec965f1c3f82f050f22b8821dd.jpg" alt="World Cup 2026 hero, 1942 edition bottles">
+<div class="stack">
+
+<img class="fr n0" src="assets/075ffbad7728519322afda3a4fdc6982.jpg" alt="World Cup watch party, popcorn toss">
+
+<img class="fr n1" src="assets/94006d732dd404956208ad5fe3c51539.jpg" alt="World Cup watch party, couch">
+
+<img class="fr n2" src="assets/40b66130f09d543b015705e1cc66135d.jpg" alt="Don Julio Blanco, watch party table">
+
+<img class="fr n3" src="assets/80388e13f74638db02437b511d90e5a0.jpg" alt="Don Julio Blanco on the zebra rug">
+
+<img class="fr n4" src="assets/b4e4e4a8ae0d60e07d7022d8ba6a863d.jpg" alt="Watch party, minis on the stairs">
+
+<img class="fr n5" src="assets/281bf32a2aeb4e164d5a2f684c0dbfb2.jpg" alt="1942 on the chessboard">
+
+</div>
+
+
+</div>
+
+<div class="hide">
+
+
+</div>
+</section>
+
+</div>
+
+<div style="background: #17140F; color: #EFEBE4">
+<div style="max-width: 1440px; margin: 0 auto; padding: 48px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div>
+<div class="mono" style="color: #DDD6CA">Next client</div>
+<a class="disp" href="MilkPEP.html" style="display: block; margin-top: 8px; font-size: clamp(40px, 8vw, 112px); line-height: 0.9; text-transform: uppercase; color: #C97B84; text-decoration: none">MilkPEP</a>
+</div>
+<a href="index.html" style="color: #EFEBE4" class="mono">Back to all work ↑</a>
+</div>
+</div>
+
+</body>
+</html>
