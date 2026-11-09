@@ -16,10 +16,118 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 .cols{column-gap:14px;columns:5 200px}
 .tile{break-inside:avoid;margin:0 0 14px;position:relative;display:block;border-radius:2px;overflow:hidden}
 .tile:hover{outline:3px solid #17140F}
+.tile.vid{box-shadow:0 0 0 8px #FAF8F4,0 0 0 9px #17140F;margin:9px 9px 23px;overflow:visible}
 .a916{aspect-ratio:9/16}.a11{aspect-ratio:1/1}.a169{aspect-ratio:16/9}
 .c0{background:#17140F;color:#EFEBE4}.c1{background:#7A1F2B;color:#F4EFE6}.c2{background:#DDD6CA;color:#17140F}.c3{background:#3A342D;color:#EFEBE4}
 .pill{display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:10px 18px;min-height:24px;border:1px solid #17140F;border-radius:999px;text-decoration:none;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#EFEBE4}
 .pill:hover{background:#7A1F2B;color:#F4EFE6}
+.tdg{display:grid;grid-template-columns:minmax(0,470px) minmax(0,510px);justify-content:center;gap:56px;align-items:start;margin-top:0}
+.pf{grid-column:2;grid-row:1;align-self:start;max-width:510px;width:100%;justify-self:center}
+.bio{margin:9px 0 24px;font-size:16px;line-height:1.5;color:#4A433A}
+.pf-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid #17140F;padding-bottom:14px}
+.pf-handle{font-family:'Instrument Serif','DM Sans',serif;font-size:clamp(30px,3.4vw,52px);line-height:1;letter-spacing:-.01em;color:#17140F;white-space:nowrap}
+.pf-count{white-space:nowrap;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;color:#6A6258}
+.pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.pt{position:relative;display:block;padding:0;border:0;aspect-ratio:9/16;border-radius:6px;overflow:hidden;cursor:pointer;font:inherit;text-align:left;background:#17140F;color:#EFEBE4;-webkit-tap-highlight-color:transparent;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.pt:hover{transform:translateY(-4px) rotate(-.6deg)}
+.pt.on{box-shadow:0 0 0 3px #EFEBE4,0 0 0 5px #7A1F2B}
+.pt.c1{background:#7A1F2B}.pt.c2{background:#DDD6CA}.pt.c3{background:#3A342D}
+.pt.dead{cursor:default}.pt.dead:hover{transform:none}
+.pt video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.pt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}
+.pt.c2::after{background:linear-gradient(transparent,rgba(23,20,15,.12))}
+.pt .no{position:absolute;left:10px;top:10px;z-index:2;font-family:'Instrument Serif',serif;font-size:34px;line-height:1;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.pt.c2 .no{color:#17140F;text-shadow:none}
+.pt .nm{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;line-height:1.3;color:#fff}
+.pt.c2 .nm{color:#17140F}
+.pt .pl{position:absolute;right:10px;top:12px;z-index:2;width:22px;height:22px;border-radius:50%;background:rgba(250,248,244,.9);display:inline-flex;align-items:center;justify-content:center;color:#17140F}
+.pt.on .pl{background:#7A1F2B;color:#F4EFE6}
+.pt .no,.pt .pl,.pf-count{display:none}.pt:hover{transform:none}.pt.dead:hover{transform:none}.pf-top{padding-bottom:12px}.pf-grid{margin-top:16px}.bio{margin:0 0 20px;max-width:46ch}.tdg .cols{display:none}
+.reel{grid-column:1;grid-row:1}
+.tdnote{grid-column:2;grid-row:1}
+.tdnote{margin:9px 0 0;max-width:620px;font-family:'Instrument Serif','DM Sans',sans-serif;font-size:clamp(28px,3.2vw,46px);line-height:1.12;letter-spacing:-.01em;color:#17140F}
+.hide{display:none !important}
+.reel{position:relative;width:auto;max-width:none;aspect-ratio:9/16;background:#17140F;border-radius:28px;box-shadow:0 0 0 8px #FAF8F4,0 0 0 9px #17140F;overflow:hidden;margin:9px}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#17140F}
+.reel .ui{position:absolute;inset:0;pointer-events:none;color:#fff;font-family:'DM Sans',system-ui,sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+.reel .ui::before{content:"";position:absolute;left:0;right:0;top:0;height:84px;background:linear-gradient(rgba(0,0,0,.45),transparent)}
+.reel .ui::after{content:"";position:absolute;left:0;right:0;bottom:0;height:190px;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.reel .top{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:center;align-items:center;font-size:15px;font-weight:700;z-index:2}
+.reel .top .on{border-bottom:2px solid #fff;padding-bottom:3px}
+.reel .rail{position:absolute;right:10px;bottom:40px;display:flex;flex-direction:column;gap:16px;align-items:center;z-index:2}
+.reel .avw{position:relative;margin-bottom:6px}
+.reel .plus{position:absolute;left:50%;bottom:-8px;margin-left:-9px;width:18px;height:18px;border-radius:50%;background:#FE2C55;display:inline-flex;align-items:center;justify-content:center}
+.reel .cap{position:absolute;left:16px;right:72px;bottom:30px;z-index:2;font-size:14px;line-height:1.35}
+.reel{cursor:pointer}
+.reel .rpl{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:3;pointer-events:none;opacity:0;transition:opacity .2s}
+.reel.paused .rpl{opacity:1}
+.reel .rbar{position:absolute;left:0;right:0;bottom:0;height:20px;z-index:4;cursor:pointer}
+.reel .rbar::before{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.3)}
+.reel .rbar i{position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff}
+.reel .who{font-weight:700;font-size:15px}
+.reel .av{width:46px;height:46px;border-radius:50%;background:#7A1F2B;border:2px solid #fff;display:inline-flex;align-items:center;justify-content:center;font-size:20px;text-shadow:none}
+.reel svg{display:block}
+@media (max-width:900px){.tdg{grid-template-columns:minmax(0,1fr);gap:36px;justify-items:center}.tdg .reel{width:100%;max-width:340px;grid-column:1;grid-row:auto}.tdnote{justify-self:start;grid-column:1;grid-row:auto}.pf{grid-column:1;grid-row:auto}.pf-grid{gap:8px}.pt .no{font-size:26px}.pt .nm{font-size:10px}}
+.res{margin-top:64px;padding-top:24px;border-top:1px solid #17140F;position:relative}
+.res-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:40px}
+@media (max-width:900px){.res-grid{grid-template-columns:minmax(0,1fr);gap:56px}}
+.res-num{font-size:clamp(72px,11vw,160px);line-height:.9;margin:0;color:#7A1F2B}
+.res-lbl{margin:14px 0 0;font-size:16px;line-height:1.5;color:#4A433A;max-width:420px}
+.res-track{height:18px;background:#DDD6CA;border-radius:2px;margin-top:28px;overflow:hidden}
+.res-fill{height:100%;background:#7A1F2B;transform-origin:0 50%}
+.res-pips{display:grid;grid-template-columns:repeat(41,minmax(0,1fr));gap:3px;margin-top:28px;height:44px;align-items:end}
+.pip{height:100%;background:#17140F;border-radius:1px;transform-origin:50% 100%}
+.pip.ep{background:#7A1F2B}
+.res-key{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;color:#6A6258}
+.res-key i{display:inline-block;width:10px;height:10px;margin-right:6px;background:#17140F;vertical-align:-1px}
+.res-key i.ep{background:#7A1F2B}
+.res-rev{position:relative}
+.res-money{display:none}
+@keyframes floatup{0%{opacity:0;transform:translateY(30px) rotate(var(--rot)) scale(.6)}25%{opacity:.95}70%{opacity:.8}100%{opacity:0;transform:translateY(-460px) rotate(calc(var(--rot) * -1)) scale(1.1)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes rise{from{transform:scaleY(.04);opacity:.3}to{transform:scaleY(1);opacity:1}}
+@property --w{syntax:'<integer>';inherits:false;initial-value:0}
+@property --t{syntax:'<integer>';inherits:false;initial-value:0}
+@keyframes cnt1{from{--w:0;--t:0}to{--w:36;--t:9}}
+@keyframes cnt2{from{--w:0;--t:0}to{--w:8;--t:9}}
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){
+.res{view-timeline:--rt block}
+.res>h2,.res-lbl,.res-key{animation:fadeup ease-out both;animation-timeline:--rt;animation-range:entry 10% entry 45%}
+.res-num .st{display:none}
+.res-num{counter-reset:w var(--w) t var(--t);animation-timeline:--rt;animation-fill-mode:both;animation-timing-function:ease-out;animation-range:entry 20% entry 80%}
+.res-num.n1{animation-name:cnt1}
+.res-num.n2{animation-name:cnt2}
+.res-num::after{content:counter(w) "." counter(t) "M"}
+.res-num.n2::after{content:"$" counter(w) "." counter(t) "M"}
+.res-fill{animation:grow linear both;animation-timeline:--rt;animation-range:entry 35% entry 95%}
+.res-money{display:block;position:absolute;left:calc(50% + 24px);right:0;bottom:40px;height:0;pointer-events:none;z-index:5}
+.dollar{position:absolute;bottom:0;left:var(--x);font-size:var(--sz);line-height:1;color:#7A1F2B;opacity:0;animation:floatup ease-out both;animation-timeline:--rt;animation-range:cover calc(var(--k) * 1%) cover calc(75% + var(--k) * 1.5%)}
+.pip{animation:rise linear both;animation-timeline:--rt;animation-range:entry calc(15% + var(--i) * .6%) entry calc(40% + var(--i) * .6%)}
+}
+@media (prefers-reduced-motion:reduce){.res-money{display:none !important}.res-fill,.pip,.res-num,.res>h2,.res-lbl,.res-key{animation:none !important}.res-num{counter-reset:w 36 t 9}.res-num.n2{counter-reset:w 8 t 9}}
+/*mob*/
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+img,video{max-width:100%}
+@media (hover:none){.tile:hover,.cm:hover{outline:none}}
+@media (max-width:900px){
+div[style*="max-width: 1440px"]{padding-left:20px !important;padding-right:20px !important}
+h2.disp{font-size:40px !important}
+.cols{columns:3;column-gap:12px}
+.pg-body{min-height:0 !important;height:auto !important}
+}
+@media (max-width:600px){
+.cols{columns:2;column-gap:10px}
+h2.disp{font-size:34px !important}
+}
+@media (max-width:900px){
+.cols{columns:2;column-gap:14px}
+.res-money{left:0 !important}
+.res-grid{gap:44px}
+}
+@media (max-width:600px){.cols{columns:1}
+.res-pips{gap:2px}}
 </style>
 
 </head>
@@ -37,60 +145,94 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 
 <div style="display: flex; flex-wrap: wrap; gap: 32px 48px; margin-top: 40px; padding: 20px 0; border-top: 1px solid #17140F; border-bottom: 1px solid #17140F">
 <div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Client</div><div style="margin-top: 6px; font-size: 18px">Bob’s Furniture</div></div>
-<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">My role</div><div style="margin-top: 6px; font-size: 18px">Producer · DP · Editor</div></div>
+<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">My role</div><div style="margin-top: 6px; font-size: 18px">producer · content capture</div></div>
+<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Agency role</div><div style="margin-top: 6px; font-size: 18px">Creative and business agency</div></div>
 </div>
 
-<div class="mono" style="color: #6A6258; margin-top: 32px">Highlighted campaigns</div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px">
+</div>
 
-<a class="pill" href="#tdudp">Til Decor Do Us Part</a>
+<div class="pg-body" style="max-width: 1440px; margin: 0 auto; padding: 0 32px 24px; box-sizing: border-box; min-height: 0">
+
+<section id="tdudp" style="margin-top: 32px; padding-top: 0">
+<div class="tdg">
+
+<div class="reel paused">
+<video id="mainreel" src="assets/ed5f497d3e8f95fad0859f40c8bf8439.mp4" playsinline="" preload="metadata"></video>
+<div class="rpl" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="#fff"></path></svg></div>
+<div class="rbar" aria-hidden="true"><i></i></div>
+<div class="ui" aria-hidden="true">
+<div class="top"><span style="opacity:.65">Following</span><span style="margin:0 10px;opacity:.4">|</span><span class="on">For You</span></div>
+<div class="rail">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.2C6.4 17.4 3 13.9 3 9.8 3 7.1 5 5.2 7.4 5.2c1.8 0 3.4 1 4.6 2.7 1.2-1.7 2.8-2.7 4.6-2.7C19 5.2 21 7.1 21 9.8c0 4.1-3.4 7.6-9 11.4z"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.5 3 10.8c0 2.4 1.2 4.5 3.2 5.9L5.6 21l4.3-2.4c.7.2 1.4.2 2.1.2 5.1 0 9-3.5 9-7.8S17.100 3 12 3z"></path></svg>
+<svg width="23" height="23" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4.600L5 21V4.500a1 1 0 0 1 1-1z"></path></svg>
+<svg width="23" height="23" viewBox="0 0 24 24" fill="#fff"><path d="M13.500 3.500 22 11.500l-8.500 8v-4.600C8.200 14.900 5 16.600 2.800 20.200c.4-5.800 3.400-9.500 10.700-10.600z"></path></svg>
+</div>
+</div>
+</div>
+
+
+<div class="pf">
+<p class="bio ">We put couples to the test in a social-first series where one partner takes on the challenge of designing the other’s dream room. Think HGTV meets TikTok, with Bob’s Discount Furniture bringing the transformations to life.</p>
+<div class="pf-top"><span class="pf-handle">@tildecordouspart</span><span class="pf-count">5 episodes</span></div>
+<div class="pf-grid">
+
+<button type="button" class="pt c0 on" data-src="assets/ed5f497d3e8f95fad0859f40c8bf8439.mp4" data-idx="0" aria-label="trailer">
+<video src="assets/ed5f497d3e8f95fad0859f40c8bf8439.mp4#t=0.5" muted="" playsinline="" preload="metadata"></video>
+<span class="no"></span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">trailer</span>
+</button>
+
+<button type="button" class="pt c0" data-src="assets/a923e9b8a47dfcce6fe62f85a4c9c556.mp4" data-idx="1" aria-label="Andrew & Regina">
+<video src="assets/a923e9b8a47dfcce6fe62f85a4c9c556.mp4#t=0.5" muted="" playsinline="" preload="metadata"></video>
+<span class="no">1</span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">Andrew & Regina</span>
+</button>
+
+<button type="button" class="pt c2" data-src="assets/605a82ce074b80bf9e5551b9d5b8c10f.mp4" data-idx="2" aria-label="Brittany & Blad">
+<video src="assets/605a82ce074b80bf9e5551b9d5b8c10f.mp4#t=0.5" muted="" playsinline="" preload="metadata"></video>
+<span class="no">2</span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">Brittany & Blad</span>
+</button>
+
+<button type="button" class="pt c1 dead" data-src="" data-idx="3" aria-label="Maria & Mason">
+
+<span class="no">3</span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">Maria & Mason</span>
+</button>
+
+<button type="button" class="pt c2 dead" data-src="" data-idx="4" aria-label="Episode 4">
+
+<span class="no">4</span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">Episode 4</span>
+</button>
+
+<button type="button" class="pt c3 dead" data-src="" data-idx="5" aria-label="Episode 5">
+
+<span class="no">5</span>
+<span class="pl"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg></span>
+<span class="nm">Episode 5</span>
+</button>
 
 </div>
 </div>
 
-<div style="max-width: 1440px; margin: 0 auto; padding: 24px 32px 64px; box-sizing: border-box">
 
-<section id="tdudp" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
-<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">Til Decor Do Us Part</h2>
-<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">[ADD YOUR ROLE AND ONE LINE ON THE IDEA]</p>
+<div class="cols " style="margin-top: 28px">
+
 </div>
-<div class="cols" style="margin-top: 28px">
-
-<div class="tile a916 c3">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Teaser</span>
-</div>
-
-<div class="tile a916 c1">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Andrew & Regina</span>
-</div>
-
-<div class="tile a11 c2">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Brittany & Blad</span>
-</div>
-
-<div class="tile a916 c0">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Maria & Mason</span>
-</div>
-
 </div>
 </section>
 
 </div>
 
-<div style="background: #17140F; color: #EFEBE4">
-<div style="max-width: 1440px; margin: 0 auto; padding: 48px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div>
-<div class="mono" style="color: #DDD6CA">Next client</div>
-<a class="disp" href="FogoDeChao.html" style="display: block; margin-top: 8px; font-size: clamp(40px, 8vw, 112px); line-height: 0.9; text-transform: uppercase; color: #C97B84; text-decoration: none">Fogo de Chão</a>
-</div>
-<a href="index.html" style="color: #EFEBE4" class="mono">Back to all work ↑</a>
-</div>
-</div>
+
+<div class="sitefoot" style="max-width: 1440px; margin: 0 auto 0; padding: 0 32px; box-sizing: border-box"><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; padding: 20px 0 16px; margin-top: 24px; border-top: 1px solid #17140F"><span style="font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase">© Orli Rein 2026</span></div></div>
 
 </body>
 </html>

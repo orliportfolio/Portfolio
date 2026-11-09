@@ -37,6 +37,37 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 .slab .mono{font-size:10px;color:#DDD6CA}
 .stk:hover .slab,.stk:focus-visible .slab{opacity:1;transform:translate(-50%,0)}
 @media (hover:none){.slab{opacity:1;transform:translate(-50%,0)}}
+/*mob*/
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+img,video{max-width:100%}
+@media (hover:none){.tile:hover,.cm:hover{outline:none}}
+@media (max-width:900px){
+div[style*="max-width: 1440px"]{padding-left:20px !important;padding-right:20px !important}
+h2.disp{font-size:40px !important}
+.cols{columns:3;column-gap:12px}
+.pg-body{min-height:0 !important;height:auto !important}
+}
+@media (max-width:600px){
+.cols{columns:2;column-gap:10px}
+h2.disp{font-size:34px !important}
+}
+@media (max-width:900px){
+.hero{min-height:0 !important}
+.hero h1{height:auto !important;margin-bottom:4px !important}
+.hero .stks{position:relative !important;left:0 !important;top:0 !important;width:100% !important;height:auto !important;aspect-ratio:auto !important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 0;margin:16px 0 8px !important}
+.hero .stk{position:relative !important;left:auto !important;top:auto !important;width:88% !important}
+.hero .stk:nth-child(even){justify-self:end}
+.hero .stk:nth-child(3n+1){margin-top:-8px}
+.slab{bottom:2%;max-width:96%;white-space:normal;text-align:center;padding:4px 10px 5px}
+.slab i{font-size:15px}
+.slab .mono{font-size:8px;line-height:1.2}
+div[style*="gap: 32px; align-items: baseline"]{gap:22px !important;flex-wrap:wrap}
+}
+@media (min-width:601px) and (max-width:900px){
+.hero .stks{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hero .stk{width:84% !important}
+}
 </style>
 
 </head>
@@ -62,55 +93,81 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 
 <div class="stks" style="left: 20px; top: 110px; position: absolute">
 
+
 <a class="stk" href="DonJulio.html#met" aria-label="Don Julio: Met Gala" style="left: -0.6%; top: 0%; width: 22.8%; --r: -4deg">
 <img src="assets/48952f4ac52eb33321db7fb4299eeda4.png" alt="Illustrated hot dog cart sticker">
 <span class="slab"><i class="disp">Don Julio</i><span class="mono">Met Gala</span></span>
 </a>
+
+
+
 
 <a class="stk" href="MilkPEP.html#gnm" aria-label="MilkPEP: Carl’s Not a Mess" style="left: 10.2%; top: 34.6%; width: 28.3%; --r: 3deg">
 <img src="assets/482736fea9c0a628f839b6385fd6ef3f.webp" alt="Carl’s Not a Mess milk bottle sticker">
 <span class="slab"><i class="disp">MilkPEP</i><span class="mono">Carl’s Not a Mess</span></span>
 </a>
 
+
+
+
 <a class="stk" href="DonJulio.html#gou" aria-label="Don Julio: 194gou" style="left: 25.9%; top: -4.1%; width: 23.6%; --r: 5deg">
 <img src="assets/16f97e6d177bf425eaa01624b49015ad.png" alt="Lavender cowboy hat sticker">
 <span class="slab"><i class="disp">Don Julio</i><span class="mono">194gou</span></span>
 </a>
+
+
+
 
 <a class="stk" href="DonJulio.html#wc" aria-label="Don Julio: World Cup" style="left: 36.9%; top: 30.5%; width: 24.4%; --r: -3deg">
 <img src="assets/2a29942c7d42b242fb4dc0d62308267b.png" alt="Don Julio 1942 duffel bag sticker">
 <span class="slab"><i class="disp">Don Julio</i><span class="mono">World Cup</span></span>
 </a>
 
+
+
+
 <a class="stk" href="DonJulio.html#sus" aria-label="Don Julio: Sustainability" style="left: 50.3%; top: 46.7%; width: 29.9%; --r: -2deg">
 <img src="assets/cdbb6e406d0b8d9196954c28f0f9dff3.png" alt="Don Julio 1942 sign sticker">
 <span class="slab"><i class="disp">Don Julio</i><span class="mono">Sustainability</span></span>
 </a>
+
+
+
 
 <a class="stk" href="BobsFurniture.html#tdudp" aria-label="Bob’s Furniture: Till Decor Do Us Part" style="left: 50.3%; top: -6.1%; width: 25.1%; --r: -5deg">
 <img src="assets/38874d204805cbe454391a5b2933c03b.png" alt="Till Decor Do Us Part microphone sticker">
 <span class="slab"><i class="disp">Bob’s Furniture</i><span class="mono">Till Decor Do Us Part</span></span>
 </a>
 
+
+
+
 <a class="stk" href="DonJulio.html#lto" aria-label="Don Julio: 70 Cristalino" style="left: 74.6%; top: 12.2%; width: 25.9%; --r: 6deg">
 <img src="assets/9198ffe98ec4ecd95e41c74e012884cc.png" alt="Bouquet of red roses sticker">
 <span class="slab"><i class="disp">Don Julio</i><span class="mono">70 Cristalino</span></span>
 </a>
+
+
+
 
 <a class="stk" href="MilkPEP.html#ewm" aria-label="MilkPEP: Every Woman’s Marathon" style="left: 69.1%; top: 0%; width: 13.4%; --r: -6deg">
 <img src="assets/226cf690cfe0915f65fe1d7e80436b02.webp" alt="Every Woman’s Marathon medal sticker">
 <span class="slab"><i class="disp">MilkPEP</i><span class="mono">Every Woman’s Marathon</span></span>
 </a>
 
-<a class="stk" href="FogoDeChao.html#fif" aria-label="Fogo de Chão: Fogo is Fire" style="left: 84.8%; top: 58.9%; width: 14.9%; --r: -8deg">
+
+
+
+
+<div class="stk" style="left: 84.8%; top: 58.9%; width: 14.9%; --r: -8deg; cursor: default">
 <img src="assets/26a57c7f6904ee09ac02549e28b6bdaf.png" alt="Fire emoji sticker">
-<span class="slab"><i class="disp">Fogo de Chão</i><span class="mono">Fogo is Fire</span></span>
-</a>
+</div>
+
 
 </div>
 </div>
 
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-bottom: 16px"><span class="mono" style="letter-spacing: 0.72px">© Orli Rein 2026</span><div style="display: flex; gap: 32px; align-items: baseline"><a class="disp" href="About.html" style="font-size: 30px; font-style: italic; line-height: 1.2">About</a><a href="resume.pdf" class="disp" style="font-size: 30px; font-style: italic; line-height: 1.2">Resume</a><a class="disp" href="https://www.linkedin.com/in/orlirein" style="font-size: 30px; font-style: italic; line-height: 1.2">LinkedIn</a></div></div><div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-bottom: 16px"><span class="mono" style="letter-spacing: 0.72px">© Orli Rein 2026</span><div style="display: flex; gap: 32px; align-items: baseline"><a class="disp" href="About.html" style="font-size: 30px; font-style: italic; line-height: 1.2">About</a><a href="Resume.html" class="disp" style="font-size: 30px; font-style: italic; line-height: 1.2">Resume</a><a class="disp" href="https://www.linkedin.com/in/orlirein" style="font-size: 30px; font-style: italic; line-height: 1.2">LinkedIn</a></div></div><div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 0">
 <div class="mono" style="line-height: 1.7"></div>
 
 </div><div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 0; align-items: flex-start; justify-content: space-between">

@@ -17,12 +17,29 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 .grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:12px}
 .grid4 .tile{margin:0}
 .cols .tile img{margin:0}
-.lead{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px}
+.lead{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px;max-width:960px}
 .lead img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px}
 .lead + .cols{margin-top:14px}
 .lead.one{grid-template-columns:minmax(0,460px)}
 .lead.one img{aspect-ratio:auto;height:auto;object-fit:contain}
 .hide{display:none}
+.wall{margin-top:28px;background:#17140F;border-radius:2px;padding:72px 24px 64px;position:relative;overflow:hidden;color:#EFEBE4;background-image:linear-gradient(rgba(239,235,228,.05) 1px,transparent 1px);background-size:100% 46px}
+.wall-lbl{color:#DDD6CA;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.wall-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 28px;align-items:center;margin:0 auto;padding:0;max-width:1180px}
+.wp{grid-column:span 2}.wp:nth-child(4){grid-column:2 / span 2}.wp:nth-child(5){grid-column:4 / span 2}
+.wp{margin:0;background:#FAF8F4;color:#17140F;padding:8px 8px 26px;box-shadow:0 10px 24px rgba(0,0,0,.5);position:relative;transform:rotate(var(--r,0deg)) translateY(var(--y,0px));transition:transform .25s ease}
+.wp::before{content:"";position:absolute;top:-11px;left:50%;width:68px;height:22px;margin-left:-34px;background:rgba(201,123,132,.78);transform:rotate(-3deg);z-index:2}
+.wp video{display:block;width:100%;aspect-ratio:9/16;object-fit:contain;background:#17140F}
+.wall::before{content:"194구";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Instrument Serif',serif;font-size:clamp(180px,32vw,480px);line-height:.8;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(201,123,132,.4);pointer-events:none;z-index:0;text-transform:none !important}
+.wall-row{position:relative;z-index:1}
+.wp:hover{transform:rotate(0deg) translateY(-6px) scale(1.02);z-index:3}
+.wp:nth-child(1){--r:-2.5deg;--y:12px}.wp:nth-child(2){--r:1deg;--y:-16px}.wp:nth-child(3){--r:2.5deg;--y:14px}.wp:nth-child(4){--r:-2deg;--y:0px}.wp:nth-child(5){--r:2.5deg;--y:0px}
+@media (max-width:900px){.wall{padding:40px 16px 32px}.wall-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px}.wp,.wp:nth-child(4),.wp:nth-child(5){grid-column:auto}.wp:nth-child(2){grid-column:1 / -1;order:-1;width:62%;justify-self:center}}
+@media (max-width:600px){.wp:nth-child(2){width:80%}}
+@media (prefers-reduced-motion:reduce){.wp{transition:none}}
+.vids{display:grid;grid-template-columns:repeat(3,minmax(0,343px));gap:28px;margin-top:28px}
+.vids .tile.vid{margin:9px 9px 23px}
+@media (max-width:900px){.vids{grid-template-columns:minmax(0,343px)}}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:1000px;gap:28px;align-items:start;margin-top:28px}
 .duo-hero{display:block;width:100%;height:auto;border-radius:2px}
 .stack{position:relative;width:100%;aspect-ratio:4/5;background:transparent}
@@ -84,6 +101,31 @@ a{color:#17140F}a:hover{color:#7A1F2B}
 .pill:hover{background:#7A1F2B;color:#F4EFE6}
 a.tile{text-decoration:none}
 a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#17140F}
+/*mob*/
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+img,video{max-width:100%}
+@media (hover:none){.tile:hover,.cm:hover{outline:none}}
+@media (max-width:900px){
+div[style*="max-width: 1440px"]{padding-left:20px !important;padding-right:20px !important}
+h2.disp{font-size:40px !important}
+.cols{columns:3;column-gap:12px}
+.pg-body{min-height:0 !important;height:auto !important}
+}
+@media (max-width:600px){
+.cols{columns:2;column-gap:10px}
+h2.disp{font-size:34px !important}
+}
+@media (max-width:900px){
+.duo,.duo.land,.duo.land.withvid,.duo.land.withvid.nostack{grid-template-columns:minmax(0,1fr) !important;max-width:none !important}
+.duo .stack,.duo.land .stack{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lead,.lead.one{grid-template-columns:minmax(0,1fr)}
+.split{grid-template-columns:minmax(0,1fr)}
+.vids{grid-template-columns:minmax(0,1fr) !important}
+.vids .tile.vid{margin:9px 9px 23px}
+.mix{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:601px) and (max-width:900px){.vids{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 </style>
 
 </head>
@@ -130,15 +172,15 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 
+
 <div class="split">
 
-<a class="tile a916 vid c0" href="#met" target="_self" rel="noopener">
+
+<div class="tile a916 vid c0">
+<video src="assets/c20243eba6047927729dca4e99d8ff97.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+</div>
 
 
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Willy's Essentials</span>
-
-</a>
 
 
 <div class="collage">
@@ -181,6 +223,33 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 
+<div class="wall">
+<div class="wall-row">
+
+<figure class="wp">
+<video src="assets/8dee47592f207b840c88890b8d768b0f.mp4" controls="" playsinline="" preload="metadata"></video>
+</figure>
+
+<figure class="wp">
+<video src="assets/f026ea49193fe9c8d181743e79cfeebe.mp4" controls="" playsinline="" preload="metadata"></video>
+</figure>
+
+<figure class="wp">
+<video src="assets/c5070614f81f72ceac0ff1913590bdaa.mp4" controls="" playsinline="" preload="metadata"></video>
+</figure>
+
+<figure class="wp">
+<video src="assets/67197ecc8a59109e2a081ea67973d256.mp4" controls="" playsinline="" preload="metadata"></video>
+</figure>
+
+<figure class="wp">
+<video src="assets/5b6aa6c5b39ba1e3fed20b0d0238c49c.mp4" controls="" playsinline="" preload="metadata"></video>
+</figure>
+
+</div>
+</div>
+
+
 <div class="hide">
 
 
@@ -194,31 +263,29 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 
-<div class="cols">
 
-<a class="tile a916 c2" href="#sus" target="_self" rel="noopener">
-
-
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Earth Day</span>
-
-</a>
-
-<a class="tile a916 c0" href="#sus" target="_self" rel="noopener">
+<div class="vids">
 
 
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">World Environment Day, cut 1</span>
-
-</a>
-
-<a class="tile a916 c1" href="#sus" target="_self" rel="noopener">
+<div class="tile a916 vid c2">
+<video src="assets/26eab6d8a81a18fb863443f1428dfc87.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+</div>
 
 
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">World Environment Day, cut 2</span>
 
-</a>
+
+<div class="tile a916 vid c0">
+<video src="assets/576efd7af48921c3bc49cbc72f57d10d.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+</div>
+
+
+
+
+<div class="tile a916 vid c1">
+<video src="assets/b090177bf7f716c51d1b4a245db9d29d.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+</div>
+
+
 
 
 </div>
@@ -231,16 +298,19 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 
-<div class="duo land withvid nostack">
 
+<div class="duo land withvid nostack">
+<img class="duo-hero" src="" alt="">
 <div class="stack">
 
 </div>
 
-<a class="tile a916 vid c0" href="#lto" rel="noopener">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="position: absolute; left: 10px; top: 10px"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-<span class="mono" style="position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 11px; line-height: 1.3">Rose Wall, master</span>
-</a>
+
+<div class="tile a916 vid c0">
+<video src="assets/fa38cdecc37d0cb719bdd80e25894dda.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+</div>
+
+
 
 
 <div class="duo-wide">
@@ -278,6 +348,7 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 
+
 <div class="duo">
 <img class="duo-hero" src="assets/9f7d9bec965f1c3f82f050f22b8821dd.jpg" alt="World Cup 2026 hero, 1942 edition bottles">
 <div class="stack">
@@ -308,13 +379,14 @@ a.c0:hover,a.c3:hover{color:#EFEBE4}a.c1:hover{color:#F4EFE6}a.c2:hover{color:#1
 </div>
 
 <div style="background: #17140F; color: #EFEBE4">
-<div style="max-width: 1440px; margin: 0 auto; padding: 48px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="max-width: 1440px; margin: 0 auto; padding: 48px 32px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
 <div>
 <div class="mono" style="color: #DDD6CA">Next client</div>
 <a class="disp" href="MilkPEP.html" style="display: block; margin-top: 8px; font-size: clamp(40px, 8vw, 112px); line-height: 0.9; text-transform: uppercase; color: #C97B84; text-decoration: none">MilkPEP</a>
 </div>
-<a href="index.html" style="color: #EFEBE4" class="mono">Back to all work ↑</a>
+
 </div>
+<div style="max-width: 1440px; margin: 0 auto; padding: 0 32px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 32px"><span class="mono" style="color: #EFEBE4">© Orli Rein 2026</span><a href="index.html" style="color: #EFEBE4" class="mono">Back to all work ↑</a></div>
 </div>
 
 </body>
