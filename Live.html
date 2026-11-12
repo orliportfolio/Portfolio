@@ -15,7 +15,7 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#17140F}
 body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .mono{font-family:'DM Mono',ui-monospace,monospace;letter-spacing:.06em}
 .disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
-.app{position:relative;width:100%;height:100%;height:100dvh;overflow:hidden}
+.app{position:relative;width:100%;height:100%;height:var(--vh,100svh);overflow:hidden}
 
 .feed{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
@@ -213,6 +213,19 @@ function sizeFrames() {
 }
 var sizeRaf;
 function queueSize() { cancelAnimationFrame(sizeRaf); sizeRaf = requestAnimationFrame(sizeFrames); }
+
+/* Hold one stable section height. Safari's URL bar sliding away changes
+   innerHeight by ~60-90px; letting sections follow that reflows the home
+   screen mid-scroll, so only a real change (rotation) counts. */
+var vhSet = 0;
+function setVh(force) {
+  var h = window.innerHeight;
+  if (!force && vhSet && Math.abs(h - vhSet) < 100) return;
+  vhSet = h;
+  document.documentElement.style.setProperty('--vh', h + 'px');
+  queueSize();
+}
+setVh(true);
 
 /* ---------- front ---------- */
 var front = el('section', 'sec sheet');
@@ -461,11 +474,10 @@ document.addEventListener('keydown', function (e) {
 
 /* re-fit whenever the viewport changes shape: rotation, browser chrome, fonts landing */
 sizeFrames();
-window.addEventListener('resize', queueSize);
-if (window.ResizeObserver) { new ResizeObserver(queueSize).observe(feed); }
+window.addEventListener('resize', function () { setVh(false); });
 if (document.fonts && document.fonts.ready) { document.fonts.ready.then(queueSize).catch(function () {}); }
 window.addEventListener('orientationchange', function () {
-  setTimeout(function () { queueSize(); feed.scrollTop = feedIdx * H(); }, 250);
+  setTimeout(function () { setVh(true); feed.scrollTop = feedIdx * H(); }, 250);
 });
 activate(0);
 })();
