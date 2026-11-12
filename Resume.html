@@ -19,12 +19,9 @@ body{background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif
 .mono{font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em}
 .disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
 .wrap{max-width:1440px;width:100%;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between;flex:1}
-.kicker{color:#4A433A}
-h1{margin:10px 0 0;font-size:clamp(52px,15vw,120px);line-height:.88;font-style:italic;overflow-wrap:break-word}
-.rule{margin:22px 0 0;height:1px;background:#17140F;opacity:.25}
-.say{margin:22px 0 0;max-width:30em;font-size:clamp(15px,4.4vw,19px);line-height:1.5;color:#4A433A}
-.say em{font-style:normal;color:#17140F}
-.acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+h1{margin:0;font-size:clamp(52px,15vw,120px);line-height:.88;font-style:italic;overflow-wrap:break-word}
+.acts{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;
   text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;cursor:pointer}
 .solid{background:#17140F;color:#EFEBE4;border:1px solid #17140F}
@@ -39,12 +36,8 @@ h1{margin:10px 0 0;font-size:clamp(52px,15vw,120px);line-height:.88;font-style:i
 <body>
 <div class="wrap">
 
-<div>
-<div class="mono kicker">orli rein / resume</div>
+<div class="mid">
 <h1 class="disp">mid&#8209;<br>makeover</h1>
-<div class="rule"></div>
-<p class="say">this one's still on the cutting room floor. <em>it'll be here soon.</em></p>
-<p class="say">in the meantime, the work speaks louder anyway &mdash; or just reach out and ask me anything.</p>
 
 <div class="acts">
 <a class="btn solid" id="back" href="index.html">
