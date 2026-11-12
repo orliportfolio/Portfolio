@@ -15,11 +15,11 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#17140F}
 body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .mono{font-family:'DM Mono',ui-monospace,monospace;letter-spacing:.06em}
 .disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
-.app{position:relative;width:100%;height:100%;overflow:hidden}
+.app{position:relative;width:100%;height:100%;height:100dvh;overflow:hidden}
 
 .feed{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
-.sec{position:relative;height:var(--vh,100dvh);overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;box-sizing:border-box}
+.sec{position:relative;height:100%;overflow:hidden;scroll-snap-align:start;box-sizing:border-box}
 
 /* front + contact */
 .sheet{background:#EFEBE4;color:#17140F;display:flex;flex-direction:column;justify-content:space-between;padding:max(44px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom))}
@@ -43,17 +43,18 @@ body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoot
 
 /* posts */
 .scrim{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to top,rgba(23,20,15,.5),rgba(23,20,15,0));pointer-events:none}
-.bar{position:absolute;top:0;left:0;right:0;padding:max(18px,env(safe-area-inset-top)) 18px 0;display:flex;justify-content:space-between;align-items:baseline;pointer-events:none;z-index:2}
+.post{display:flex;flex-direction:column}
+.bar{position:relative;z-index:2;flex:none;padding:max(16px,env(safe-area-inset-top)) 18px 0;display:flex;justify-content:space-between;align-items:baseline;pointer-events:none}
 .bar i{font-style:italic;font-size:26px;letter-spacing:-.01em;color:#EFEBE4;font-family:'Instrument Serif','DM Sans',sans-serif}
 .bar b{font-weight:400;font-size:11px;color:#EFEBE4}
-.stage{position:absolute;top:7%;left:0;right:0;height:71%;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.frame{position:relative;border-radius:14px;overflow:hidden;background:rgba(23,20,15,.25);box-shadow:0 10px 30px rgba(23,20,15,.35)}
+.stage{position:relative;z-index:1;flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vh,20px) 16px;box-sizing:border-box;pointer-events:none}
+.frame{position:relative;flex:0 1 auto;min-height:0;aspect-ratio:var(--ar,.5625);max-width:100%;max-height:100%;border-radius:14px;overflow:hidden;background:rgba(23,20,15,.25);box-shadow:0 10px 30px rgba(23,20,15,.35)}
 .frame img.hero,.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .stk{position:absolute;z-index:2;right:9px;top:9px;max-height:46px;max-width:104px;width:auto;height:auto;filter:drop-shadow(0 3px 7px rgba(23,20,15,.45))}
 .chip{position:absolute;z-index:2;bottom:9px;padding:3px 7px;border-radius:7px;background:rgba(23,20,15,.38);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:'DM Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.02em;color:#fff;text-shadow:0 1px 2px rgba(23,20,15,.45)}
 .chip.t{right:9px}
 .chip.s{left:9px;display:flex;align-items:center;gap:5px;font-size:10px;letter-spacing:.05em}
-.below{position:absolute;left:0;right:0;bottom:0;padding:0 20px max(16px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:6px;box-sizing:border-box;pointer-events:none;z-index:2}
+.below{position:relative;z-index:2;flex:none;padding:0 20px max(14px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:5px;box-sizing:border-box;pointer-events:none}
 .below .cl{font-size:11px;color:#EFEBE4}
 .below h2{margin:0;font-style:italic;font-size:clamp(32px,10vw,40px);line-height:.95;color:#fff}
 .below p{margin:0;font-size:13px;line-height:1.4;color:#F4EFE6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -82,6 +83,27 @@ body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoot
 
 noscript .ns{display:block;padding:40px 20px;background:#EFEBE4;color:#17140F}
 @media (prefers-reduced-motion:reduce){.feed{scroll-behavior:auto}}
+
+/* shorter phones: give the media room by easing off the type */
+@media (max-height:760px){
+  .sheet{padding-top:max(30px,env(safe-area-inset-top))}
+  .name{font-size:clamp(54px,20vw,88px)}
+  .me{height:clamp(100px,15vh,150px);margin-top:12px}
+  .bio{margin-top:12px;gap:6px;font-size:13px}
+  .ctitle{font-size:clamp(46px,16vw,66px)}
+  .row{min-height:54px}
+  .row span{font-size:clamp(24px,7vw,30px)}
+  .top{min-height:48px;margin-top:14px}
+  .below h2{font-size:clamp(27px,8vw,34px)}
+  .below p{-webkit-line-clamp:2;font-size:12px}
+}
+@media (max-height:650px){
+  .name{font-size:clamp(46px,17vw,70px)}
+  .me{height:clamp(84px,13vh,120px)}
+  .bio{font-size:12px;line-height:1.4}
+  .below p{display:none}
+  .below h2{font-size:clamp(25px,7.5vw,30px)}
+}
 </style>
 </head>
 <body>
@@ -169,27 +191,28 @@ function fmt(t) { var n = Math.max(0, Math.ceil(t || 0)); return Math.floor(n / 
 function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
 
 var feed = document.getElementById('feed');
-var H = window.innerHeight;
 
-function setVh() {
-  var h = window.innerHeight;
-  if (Math.abs(h - H) < 90 && H) return;        /* ignore browser-chrome jitter */
-  H = h;
-  document.documentElement.style.setProperty('--vh', h + 'px');
-  sizeFrames();
-}
-document.documentElement.style.setProperty('--vh', H + 'px');
+/* one section is always exactly the feed's own height, whatever the device */
+function H() { return feed.clientHeight || window.innerHeight; }
 
+/* the stage takes whatever the bar and caption leave; the frame fits its own
+   ratio inside that, so any screen shape works without a magic number */
 function sizeFrames() {
-  CAMPS.forEach(function (c, i) {
-    if (!c.frameEl) return;
-    var maxW = Math.min(window.innerWidth * 0.918, 420), maxH = H * 0.68;
-    var h = maxH, w = c.ar * h;
-    if (w > maxW) { w = maxW; h = w / c.ar; }
+  CAMPS.forEach(function (c) {
+    var st = c.stageEl;
+    if (!st || !c.frameEl) return;
+    var cs = getComputedStyle(st);
+    var aw = st.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var ah = st.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    if (aw <= 0 || ah <= 0) return;
+    var h = ah, w = c.ar * h;
+    if (w > aw) { w = aw; h = w / c.ar; }
     c.frameEl.style.width = Math.round(w) + 'px';
     c.frameEl.style.height = Math.round(h) + 'px';
   });
 }
+var sizeRaf;
+function queueSize() { cancelAnimationFrame(sizeRaf); sizeRaf = requestAnimationFrame(sizeFrames); }
 
 /* ---------- front ---------- */
 var front = el('section', 'sec sheet');
@@ -208,8 +231,9 @@ feed.appendChild(front);
 
 /* ---------- posts ---------- */
 CAMPS.forEach(function (c, i) {
-  var s = el('section', 'sec');
+  var s = el('section', 'sec post');
   s.style.background = grad(c.heroKey);
+  s.style.setProperty('--ar', c.ar);   /* the frame sizes itself from this */
   var nv = 0, np = 0;
   c.items.forEach(function (x) { if (x.video) nv++; else np++; });
   var parts = [];
@@ -231,6 +255,7 @@ CAMPS.forEach(function (c, i) {
     '<div class="mono cta"><span><svg width="10" height="10" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="#EFEBE4"></path></svg>tap to open · ' + parts.join(', ') + '</span>' + CHEV + '</div></div>' +
     '<button type="button" class="hit" aria-label="open ' + c.title + '"></button>';
 
+  c.stageEl = s.querySelector('.stage');
   c.frameEl = s.querySelector('.frame');
   c.chipEl = s.querySelector('.chip.t');
   /* a tap that closed the viewer re-fires as a click on whatever is underneath; ignore it */
@@ -240,7 +265,6 @@ CAMPS.forEach(function (c, i) {
   });
   feed.appendChild(s);
 });
-sizeFrames();
 
 /* ---------- contact ---------- */
 var LINKS = [
@@ -261,7 +285,7 @@ contact.innerHTML =
 feed.appendChild(contact);
 
 document.getElementById('toContact').addEventListener('click', function () {
-  feed.scrollTo({ top: (CAMPS.length + 1) * H, behavior: 'smooth' });
+  feed.scrollTo({ top: (CAMPS.length + 1) * H(), behavior: 'smooth' });
 });
 document.getElementById('toTop').addEventListener('click', function () {
   feed.scrollTo({ top: 0, behavior: 'smooth' });
@@ -299,7 +323,7 @@ function activate(ci) {
 
 var sTo;
 feed.addEventListener('scroll', function () {
-  var i = Math.round(feed.scrollTop / H);
+  var i = Math.round(feed.scrollTop / H());
   if (i === feedIdx) return;
   feedIdx = i;
   clearTimeout(sTo);
@@ -378,9 +402,9 @@ function closeViewer(advance) {
   try { vMedia.pause(); } catch (e) {}
   vMedia.removeAttribute('src');
   feedIdx = ci + 1;
-  feed.scrollTop = (ci + 1) * H;
-  if (advance) setTimeout(function () { feed.scrollTo({ top: (ci + 2) * H, behavior: 'smooth' }); }, 140);
-  setTimeout(function () { activate(Math.round(feed.scrollTop / H) - 1); }, advance ? 700 : 160);
+  feed.scrollTop = (ci + 1) * H();
+  if (advance) setTimeout(function () { feed.scrollTo({ top: (ci + 2) * H(), behavior: 'smooth' }); }, 140);
+  setTimeout(function () { activate(Math.round(feed.scrollTop / H()) - 1); }, advance ? 700 : 160);
 }
 
 function tick() {
@@ -435,8 +459,14 @@ document.addEventListener('keydown', function (e) {
   else if (e.key === 'ArrowLeft') prevItem();
 });
 
-window.addEventListener('resize', setVh);
-window.addEventListener('orientationchange', function () { setTimeout(setVh, 200); });
+/* re-fit whenever the viewport changes shape: rotation, browser chrome, fonts landing */
+sizeFrames();
+window.addEventListener('resize', queueSize);
+if (window.ResizeObserver) { new ResizeObserver(queueSize).observe(feed); }
+if (document.fonts && document.fonts.ready) { document.fonts.ready.then(queueSize).catch(function () {}); }
+window.addEventListener('orientationchange', function () {
+  setTimeout(function () { queueSize(); feed.scrollTop = feedIdx * H(); }, 250);
+});
 activate(0);
 })();
 </script>
