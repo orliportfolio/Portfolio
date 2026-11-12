@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Orli Rein, live</title>
+<meta name="description" content="Orli Rein, creative producer. Selected work, as a feed.">
+<meta name="theme-color" content="#17140F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+*{text-transform:lowercase}
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#17140F}
+body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:'DM Mono',ui-monospace,monospace;letter-spacing:.06em}
+.disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
+.app{position:relative;width:100%;height:100%;overflow:hidden}
+
+.feed{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.feed::-webkit-scrollbar{display:none}
+.sec{position:relative;height:var(--vh,100dvh);overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;box-sizing:border-box}
+
+/* front + contact */
+.sheet{background:#EFEBE4;color:#17140F;display:flex;flex-direction:column;justify-content:space-between;padding:max(44px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom))}
+.kicker{font-size:11px;line-height:1.5;color:#4A433A}
+.name{margin:8px 0 0;font-size:clamp(68px,25vw,112px);line-height:.86;color:#17140F}
+.me{display:block;width:100%;height:clamp(130px,20vh,180px);margin-top:16px;object-fit:cover;object-position:50% 14.122%;border-radius:2px;background:#DDD6CA}
+.bio{margin-top:16px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.45;color:#4A433A}
+.bio p{margin:0}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid #17140F;border-radius:999px;background:transparent;color:#17140F;font-size:12px;cursor:pointer}
+.pill:hover,.pill:focus-visible{background:#7A1F2B;color:#F4EFE6;border-color:#7A1F2B;outline:none}
+.cue{display:flex;align-items:center;gap:6px;font-size:11px;color:#17140F}
+.foot{display:flex;justify-content:space-between;align-items:center}
+
+.ctitle{margin:10px 0 0;font-size:clamp(60px,21vw,84px);line-height:.88}
+.row{display:flex;align-items:center;justify-content:space-between;min-height:64px;border-top:1px solid #17140F;color:#17140F;text-decoration:none}
+.row:hover,.row:focus-visible{color:#7A1F2B;outline:none}
+.row span{font-style:italic;font-size:clamp(28px,8vw,34px);line-height:1}
+.top{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;margin-top:18px;border:0;border-radius:999px;background:#17140F;color:#EFEBE4;font-size:12px;cursor:pointer}
+.top:hover,.top:focus-visible{background:#7A1F2B;outline:none}
+.meta{margin-top:14px;display:flex;justify-content:space-between;font-size:11px;color:#17140F}
+.esc{margin-top:10px;display:block;text-align:center;font-size:11px;color:#4A433A;text-decoration:underline}
+
+/* posts */
+.scrim{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to top,rgba(23,20,15,.5),rgba(23,20,15,0));pointer-events:none}
+.bar{position:absolute;top:0;left:0;right:0;padding:max(18px,env(safe-area-inset-top)) 18px 0;display:flex;justify-content:space-between;align-items:baseline;pointer-events:none;z-index:2}
+.bar i{font-style:italic;font-size:26px;letter-spacing:-.01em;color:#EFEBE4;font-family:'Instrument Serif','DM Sans',sans-serif}
+.bar b{font-weight:400;font-size:11px;color:#EFEBE4}
+.stage{position:absolute;top:7%;left:0;right:0;height:71%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.frame{position:relative;border-radius:14px;overflow:hidden;background:rgba(23,20,15,.25);box-shadow:0 10px 30px rgba(23,20,15,.35)}
+.frame img.hero,.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.stk{position:absolute;z-index:2;right:9px;top:9px;max-height:46px;max-width:104px;width:auto;height:auto;filter:drop-shadow(0 3px 7px rgba(23,20,15,.45))}
+.chip{position:absolute;z-index:2;bottom:9px;padding:3px 7px;border-radius:7px;background:rgba(23,20,15,.38);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:'DM Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.02em;color:#fff;text-shadow:0 1px 2px rgba(23,20,15,.45)}
+.chip.t{right:9px}
+.chip.s{left:9px;display:flex;align-items:center;gap:5px;font-size:10px;letter-spacing:.05em}
+.below{position:absolute;left:0;right:0;bottom:0;padding:0 20px max(16px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:6px;box-sizing:border-box;pointer-events:none;z-index:2}
+.below .cl{font-size:11px;color:#EFEBE4}
+.below h2{margin:0;font-style:italic;font-size:clamp(32px,10vw,40px);line-height:.95;color:#fff}
+.below p{margin:0;font-size:13px;line-height:1.4;color:#F4EFE6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cta{display:flex;justify-content:space-between;align-items:center;margin-top:4px;font-size:11px;color:#EFEBE4}
+.cta span{display:flex;align-items:center;gap:7px}
+.hit{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:3}
+
+/* viewer */
+.viewer{position:absolute;inset:0;z-index:20;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.viewer[hidden]{display:none}
+.viewer .media{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.vtop{position:absolute;left:0;right:0;top:0;height:110px;background:linear-gradient(to bottom,rgba(23,20,15,.35),rgba(23,20,15,0));pointer-events:none}
+.segs{position:absolute;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:3px;pointer-events:none}
+.seg{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden}
+.seg i{display:block;height:100%;width:0;background:#fff}
+.vhead{position:absolute;top:calc(max(10px,env(safe-area-inset-top)) + 12px);left:12px;right:4px;display:flex;align-items:center;justify-content:space-between}
+.vwho{display:flex;align-items:center;gap:10px;pointer-events:none}
+.av{width:36px;height:36px;border-radius:50%;background:#EFEBE4;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.av img{width:26px;height:26px;object-fit:contain}
+.vwho div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.vwho em{font-style:normal;font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:#fff}
+.vwho strong{font-weight:400;font-style:italic;font-family:'Instrument Serif','DM Sans',sans-serif;font-size:20px;line-height:1;color:#fff}
+.ic{width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.ic[hidden],.chip[hidden],.media[hidden],.vchip[hidden]{display:none}
+.vchip{position:absolute;right:14px;bottom:max(22px,env(safe-area-inset-bottom));padding:3px 7px;border-radius:7px;background:rgba(23,20,15,.38);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:'DM Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.02em;color:#fff;text-shadow:0 1px 2px rgba(23,20,15,.45);pointer-events:none}
+
+noscript .ns{display:block;padding:40px 20px;background:#EFEBE4;color:#17140F}
+@media (prefers-reduced-motion:reduce){.feed{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="app">
+<div class="feed" id="feed"></div>
+
+<div class="viewer" id="viewer" role="dialog" aria-label="campaign" hidden>
+<video class="media" id="vMedia" playsinline hidden></video>
+<img class="media" id="iMedia" alt="" draggable="false" hidden>
+<div class="vtop"></div>
+<div class="vchip" id="vChip" hidden></div>
+<div class="segs" id="vSegs"></div>
+<div class="vhead">
+<div class="vwho">
+<span class="av"><img id="vStk" alt=""></span>
+<div><em id="vClient"></em><strong id="vTitle"></strong></div>
+</div>
+<div style="display:flex;align-items:center">
+<button type="button" class="ic" id="vSound" aria-label="turn sound off"></button>
+<button type="button" class="ic" id="vClose" aria-label="close">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6 6 18"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<noscript><div class="ns"><h1 class="disp">orli rein</h1><p>this feed needs javascript. <a href="index.html?full=1">view the full site</a>.</p></div></noscript>
+
+<script>
+(function () {
+'use strict';
+var A = 'assets/live/';
+
+var COLORS = {"ewm-v1":["#4c3f2e","#9c2d41"],"ewm-v2":["#7b5e45","#434f79"],"gou-v1":["#445178","#3d3d60"],"gou-v2":["#4b3a2e","#363f54"],"gou-v3":["#584435","#9c7d2f"],"gou-v4":["#4a3d2f","#2d3b4d"],"gou-v5":["#414b66","#2f3d4a"],"gou-v6":["#324499","#7c604c"],"gou-v7":["#753537","#445c87"],"lto-v1":["#671813","#651521"],"met-v1":["#7c664f","#4c2d30"],"sus-v1":["#0f40bc","#735946"],"sus-v2":["#30759b","#30759b"],"sus-v3":["#0a367c","#7b4222"],"tdudp-v1":["#4b3a2e","#2f3a4a"],"tdudp-v2":["#7c6d4f","#7c674f"],"tdudp-v3":["#5a4637","#645140"],"gnm-p1":["#4b3a2e","#5a4637"],"gnm-p10":["#4a392f","#654e3e"],"gnm-p2":["#4b3a2e","#4b3a2e"],"gnm-p3":["#405a65","#4b3a2e"],"gnm-p4":["#5c4838","#4a372f"],"gnm-p5":["#765b48","#4b3a2e"],"gnm-p6":["#5e4939","#4b3a2e"],"gnm-p7":["#4b3a2e","#7e624d"],"gnm-p8":["#4b3a2e","#4b3a2e"],"gnm-p9":["#364256","#4a352f"],"lto-p1":["#592028","#5c1e25"],"lto-p2":["#67121c","#57232a"],"lto-p3":["#651517","#6c0e10"],"lto-p4":["#710913","#700916"],"met-p1":["#4b3a2e","#1e305b"],"met-p2":["#7e624d","#6a5241"],"met-p3":["#4b3a2e","#4d312d"],"met-p4":["#4b3a2e","#695140"],"met-p5":["#71090a","#733845"],"wc-p1":["#294351","#584c21"],"wc-p2":["#4a3f2f","#624c3c"],"wc-p3":["#4b3a2e","#6e5543"],"wc-p4":["#4b3730","#2f4a4a"],"wc-p5":["#4e3a31","#4b3a2e"],"wc-p6":["#624c3c","#4c3b2e"],"wc-p7":["#67503f","#584138"],"ewm-hero":["#4c3f30","#912d4a"],"gnm-hero":["#4b3a2e","#7e624d"],"gou-hero":["#4f3d30","#574335"],"lto-hero":["#641616","#691027"],"met-hero":["#7c664f","#4d2d30"],"sus-hero":["#1039bb","#755a47"],"tdudp-hero":["#4b3a2e","#4b3a2e"],"wc-hero":["#294351","#584c21"]};
+
+function grad(k) { var c = COLORS[k] || ['#4b3a2e', '#4b3a2e']; return 'linear-gradient(180deg,' + c[0] + ' 0%,' + c[1] + ' 100%)'; }
+function v(k) { return { video: true, audio: true, key: k, src: A + k + '.mp4', poster: A + k + '.png' }; }
+function lp(k) { return { video: true, audio: false, key: k, src: A + k + '.mp4', poster: A + k + '.png' }; }
+function ph(k) { return { video: false, audio: false, key: k, src: A + k + '.jpg' }; }
+
+var CAMPS = [
+  { slug: 'met', client: 'don julio', title: 'met gala', ar: 0.5625, heroKey: 'met-hero', rot: -4,
+    caption: 'Fashion’s biggest night. Willy Chavarría x Don Julio hosted the 2025 Met Gala after-party at The Mark Hotel, with hot dog and tequila pairings.',
+    alt: 'Still from the Met Gala video: a man in a brown houndstooth suit and gold chains, smiling',
+    items: [v('met-v1'), ph('met-p1'), ph('met-p2'), ph('met-p3'), ph('met-p4'), ph('met-p5')] },
+  { slug: 'tdudp', client: 'bob’s furniture', title: 'till decor do us part', ar: 0.5628, heroKey: 'tdudp-hero', rot: -5,
+    caption: 'We put couples to the test in a social-first series where one partner takes on the challenge of designing the other’s dream room. Think HGTV meets TikTok.',
+    alt: 'Still from the Till Decor Do Us Part trailer',
+    items: [v('tdudp-v1'), v('tdudp-v2'), v('tdudp-v3')] },
+  { slug: 'gou', client: 'don julio', title: '194gou (194구)', ar: 0.5628, heroKey: 'gou-hero', rot: 5,
+    caption: 'Peggy Gou x Don Julio 1942: one limited-edition bottle, 194구, from the streets to the screen. Gou big or go home.',
+    alt: 'Still from the 194gou video: a Gou’s News newspaper front page',
+    items: [v('gou-v1'), v('gou-v2'), v('gou-v3'), v('gou-v4'), v('gou-v5'), lp('gou-v6'), lp('gou-v7')] },
+  { slug: 'lto', client: 'don julio', title: '70 cristalino lto', ar: 0.5628, heroKey: 'lto-hero', rot: 6,
+    caption: 'A new Willy Chavarría artist edition bottle, inspired by Día de Muertos. We launched it at NYFW with a wall of 3,000 red roses, free to take home.',
+    alt: 'Still from the 70 Cristalino video',
+    items: [v('lto-v1'), ph('lto-p1'), ph('lto-p2'), ph('lto-p3'), ph('lto-p4')] },
+  { slug: 'gnm', client: 'milkpep', title: 'carl’s not a mess', ar: 0.67, heroKey: 'gnm-p8', rot: 3,
+    caption: 'Bravo’s Summer House Season 9 reunion was one of the year’s most talked-about reality TV moments. We hosted a live viewing with the cast.',
+    alt: 'Carl on the couch holding a glass of milk',
+    items: [ph('gnm-p8'), ph('gnm-p1'), ph('gnm-p2'), ph('gnm-p3'), ph('gnm-p4'), ph('gnm-p5'), ph('gnm-p6'), ph('gnm-p7'), ph('gnm-p9'), ph('gnm-p10')] },
+  { slug: 'ewm', client: 'milkpep', title: 'every woman’s marathon', ar: 0.5625, heroKey: 'ewm-hero', rot: -6,
+    caption: 'Milk stepped into endurance sports with Every Woman’s Marathon, a race created to celebrate and empower women in running. We built Rookie Route, a raw social series following first-time marathon runners.',
+    alt: 'Still from the Rookie Route video',
+    items: [v('ewm-v1'), v('ewm-v2')] },
+  { slug: 'sus', client: 'don julio', title: 'sustainability', ar: 0.5625, heroKey: 'sus-hero', rot: -2,
+    caption: 'Sustainability, told through education and art. Partnered with Mexican artists to share how Don Julio is made in the highlands of Jalisco.',
+    alt: 'Still from the Sustainability video',
+    items: [v('sus-v1'), v('sus-v2'), v('sus-v3')] },
+  { slug: 'wc', client: 'don julio', title: 'world cup', ar: 0.8, heroKey: 'wc-hero', rot: -3,
+    caption: 'Official Sponsor of the FIFA World Cup 2026, with a special 1942 edition bottle.',
+    alt: 'World Cup 2026 hero, 1942 edition bottles',
+    items: [ph('wc-p1'), ph('wc-p2'), ph('wc-p3'), ph('wc-p4'), ph('wc-p5'), ph('wc-p6'), ph('wc-p7')] }
+];
+CAMPS.forEach(function (c) { c.hero = A + c.heroKey + '.jpg'; c.sticker = A + 'st-' + c.slug + '.png'; });
+
+var SPK = '<svg width="%S%" height="%S%" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"></path>';
+var MUTE = SPK + '<path d="m22 9-6 6"></path><path d="m16 9 6 6"></path></svg>';
+var LOUD = SPK + '<path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>';
+var CHEV = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l5 5 5-5"></path></svg>';
+
+function fmt(t) { var n = Math.max(0, Math.ceil(t || 0)); return Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0'); }
+function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+
+var feed = document.getElementById('feed');
+var H = window.innerHeight;
+
+function setVh() {
+  var h = window.innerHeight;
+  if (Math.abs(h - H) < 90 && H) return;        /* ignore browser-chrome jitter */
+  H = h;
+  document.documentElement.style.setProperty('--vh', h + 'px');
+  sizeFrames();
+}
+document.documentElement.style.setProperty('--vh', H + 'px');
+
+function sizeFrames() {
+  CAMPS.forEach(function (c, i) {
+    if (!c.frameEl) return;
+    var maxW = Math.min(window.innerWidth * 0.918, 420), maxH = H * 0.68;
+    var h = maxH, w = c.ar * h;
+    if (w > maxW) { w = maxW; h = w / c.ar; }
+    c.frameEl.style.width = Math.round(w) + 'px';
+    c.frameEl.style.height = Math.round(h) + 'px';
+  });
+}
+
+/* ---------- front ---------- */
+var front = el('section', 'sec sheet');
+front.innerHTML =
+  '<div>' +
+  '<div class="mono kicker">creative producer / editorial strategist / content creator</div>' +
+  '<h1 class="disp name">orli<br>rein</h1>' +
+  '<img class="me" src="' + A + 'about.jpg" alt="Orli Rein">' +
+  '<div class="bio"><p>Orli Rein is an iMovie kid turned creative producer based in New York City.</p>' +
+  '<p>She brings campaigns to life across formats and experiences, blending thoughtful production with a sharp eye for storytelling and culture.</p>' +
+  '<p>Naturally curious and chronically online, she spends an unreasonable amount of time looking for inspiration — and occasionally calls it work.</p></div>' +
+  '</div>' +
+  '<div class="foot"><button type="button" class="pill mono" id="toContact">contact me' + CHEV + '</button>' +
+  '<span class="mono cue">selected work' + CHEV + '</span></div>';
+feed.appendChild(front);
+
+/* ---------- posts ---------- */
+CAMPS.forEach(function (c, i) {
+  var s = el('section', 'sec');
+  s.style.background = grad(c.heroKey);
+  var nv = 0, np = 0;
+  c.items.forEach(function (x) { if (x.video) nv++; else np++; });
+  var parts = [];
+  if (nv) parts.push(nv + (nv > 1 ? ' videos' : ' video'));
+  if (np) parts.push(np + (np > 1 ? ' photos' : ' photo'));
+  c.firstIsVideo = c.items[0].video;
+
+  s.innerHTML =
+    '<div class="scrim"></div>' +
+    '<div class="bar"><i>orli rein</i><b class="mono">' + String(i + 1).padStart(2, '0') + ' / 08</b></div>' +
+    '<div class="stage"><div class="frame">' +
+      '<img class="hero" src="' + c.hero + '" alt="' + c.alt + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
+      '<img class="stk" src="' + c.sticker + '" alt="" style="transform:rotate(' + c.rot + 'deg)">' +
+      (c.firstIsVideo ? '<div class="chip t" hidden></div><div class="chip s mono">' + MUTE.replace(/%S%/g, '12') + '<span>tap for sound</span></div>' : '') +
+    '</div></div>' +
+    '<div class="below"><div class="mono cl">' + c.client + '</div>' +
+    '<h2 class="disp">' + c.title + '</h2>' +
+    '<p>' + c.caption + '</p>' +
+    '<div class="mono cta"><span><svg width="10" height="10" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="#EFEBE4"></path></svg>tap to open · ' + parts.join(', ') + '</span>' + CHEV + '</div></div>' +
+    '<button type="button" class="hit" aria-label="open ' + c.title + '"></button>';
+
+  c.frameEl = s.querySelector('.frame');
+  c.chipEl = s.querySelector('.chip.t');
+  s.querySelector('.hit').addEventListener('click', function () { openAt(i, 0); });
+  feed.appendChild(s);
+});
+sizeFrames();
+
+/* ---------- contact ---------- */
+var LINKS = [
+  { label: 'email', href: 'mailto:orlirein8@gmail.com' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/orlirein' },
+  { label: 'resume', href: 'Resume.html' }
+];
+var contact = el('section', 'sec sheet');
+contact.innerHTML =
+  '<div><div class="mono kicker">creative producer / editorial strategist / content creator</div>' +
+  '<h2 class="disp ctitle">contact<br>me</h2></div>' +
+  '<div><div>' + LINKS.map(function (l) {
+    return '<a class="row" href="' + l.href + '"' + (/^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : '') + '><span class="disp">' + l.label + '</span>' +
+      '<svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6"></path><path d="M5.5 5H11v5.5"></path></svg></a>';
+  }).join('') + '</div>' +
+  '<button type="button" class="top mono" id="toTop"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l5-5 5 5"></path></svg>back to top</button>' +
+  '<div class="mono meta"><span>© orli rein 2026</span><span>new york city</span></div>' +
+  '<a class="mono esc" href="index.html?full=1">view the full site</a></div>';
+feed.appendChild(contact);
+
+document.getElementById('toContact').addEventListener('click', function () {
+  feed.scrollTo({ top: (CAMPS.length + 1) * H, behavior: 'smooth' });
+});
+document.getElementById('toTop').addEventListener('click', function () {
+  feed.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ---------- feed video ---------- */
+var feedIdx = 0, feedVid = null, feedCi = -1;
+
+function clearFeedVid() {
+  if (feedVid) { try { feedVid.pause(); feedVid.removeAttribute('src'); feedVid.load(); } catch (e) {} feedVid.remove(); feedVid = null; }
+  if (feedCi >= 0 && CAMPS[feedCi] && CAMPS[feedCi].chipEl) CAMPS[feedCi].chipEl.hidden = true;
+  feedCi = -1;
+}
+
+function activate(ci) {
+  if (ci === feedCi) return;
+  clearFeedVid();
+  var c = CAMPS[ci];
+  if (!c || !c.firstIsVideo || open_) return;
+  feedCi = ci;
+  var vd = document.createElement('video');
+  vd.src = c.items[0].src;
+  vd.muted = true; vd.loop = true; vd.playsInline = true;
+  vd.setAttribute('playsinline', ''); vd.setAttribute('muted', '');
+  vd.preload = 'auto';
+  vd.addEventListener('canplay', function () { var p = vd.play(); if (p && p.catch) p.catch(function () {}); });
+  vd.addEventListener('timeupdate', function () {
+    if (!vd.duration || !c.chipEl) return;
+    c.chipEl.hidden = false;
+    c.chipEl.textContent = fmt(vd.duration - vd.currentTime);
+  });
+  c.frameEl.appendChild(vd);
+  feedVid = vd;
+}
+
+var sTo;
+feed.addEventListener('scroll', function () {
+  var i = Math.round(feed.scrollTop / H);
+  if (i === feedIdx) return;
+  feedIdx = i;
+  clearTimeout(sTo);
+  sTo = setTimeout(function () { activate(feedIdx - 1); }, 120);
+}, { passive: true });
+
+/* ---------- viewer ---------- */
+var viewer = document.getElementById('viewer');
+var vMedia = document.getElementById('vMedia'), iMedia = document.getElementById('iMedia');
+var vSegs = document.getElementById('vSegs'), vChip = document.getElementById('vChip');
+var vStk = document.getElementById('vStk'), vClient = document.getElementById('vClient'), vTitle = document.getElementById('vTitle');
+var vSound = document.getElementById('vSound'), vClose = document.getElementById('vClose');
+var open_ = false, ci = 0, ii = 0, prog = 0, muted = false, timer = null;
+
+function cur() { return CAMPS[ci].items[ii]; }
+
+function paintSegs() {
+  var items = CAMPS[ci].items;
+  if (vSegs.children.length !== items.length) {
+    vSegs.innerHTML = items.map(function () { return '<div class="seg"><i></i></div>'; }).join('');
+  }
+  for (var k = 0; k < items.length; k++) {
+    vSegs.children[k].firstChild.style.width = k < ii ? '100%' : k === ii ? (prog * 100).toFixed(1) + '%' : '0%';
+  }
+}
+
+function render() {
+  var c = CAMPS[ci], it = cur();
+  viewer.style.background = grad(it.key);
+  viewer.setAttribute('aria-label', c.title);
+  vStk.src = c.sticker; vClient.textContent = c.client; vTitle.textContent = c.title;
+  vSound.hidden = !it.audio;
+  vSound.innerHTML = (muted ? MUTE : LOUD).replace(/%S%/g, '22');
+  vSound.setAttribute('aria-label', muted ? 'turn sound on' : 'turn sound off');
+  vChip.hidden = true;
+
+  if (it.video) {
+    iMedia.hidden = true; iMedia.removeAttribute('src');
+    vMedia.hidden = false;
+    if (vMedia.getAttribute('src') !== it.src) { vMedia.setAttribute('src', it.src); vMedia.load(); }
+    vMedia.muted = it.audio ? muted : true;
+    vMedia.loop = false;
+    var p = vMedia.play();
+    if (p && p.catch) p.catch(function () { vMedia.muted = true; muted = true; vSound.innerHTML = MUTE.replace(/%S%/g, '22'); vMedia.play(); });
+  } else {
+    try { vMedia.pause(); } catch (e) {}
+    vMedia.hidden = true; vMedia.removeAttribute('src');
+    iMedia.hidden = false; iMedia.src = it.src; iMedia.alt = c.alt;
+  }
+  paintSegs();
+}
+
+vMedia.addEventListener('timeupdate', function () {
+  if (!vMedia.duration) return;
+  prog = Math.min(1, vMedia.currentTime / vMedia.duration);
+  vChip.hidden = false;
+  vChip.textContent = fmt(vMedia.duration - vMedia.currentTime);
+  paintSegs();
+});
+vMedia.addEventListener('ended', function () { nextItem(); });
+
+function openAt(c0, i0) {
+  clearFeedVid();
+  open_ = true; ci = c0; ii = i0; prog = 0; muted = false;
+  viewer.hidden = false;
+  document.body.style.overscrollBehavior = 'none';
+  render();
+  if (!timer) timer = setInterval(tick, 50);
+}
+
+function closeViewer(advance) {
+  open_ = false;
+  viewer.hidden = true;
+  clearInterval(timer); timer = null;
+  try { vMedia.pause(); } catch (e) {}
+  vMedia.removeAttribute('src');
+  feedIdx = ci + 1;
+  feed.scrollTop = (ci + 1) * H;
+  if (advance) setTimeout(function () { feed.scrollTo({ top: (ci + 2) * H, behavior: 'smooth' }); }, 140);
+  setTimeout(function () { activate(Math.round(feed.scrollTop / H) - 1); }, advance ? 700 : 160);
+}
+
+function tick() {
+  if (!open_) return;
+  var it = cur();
+  if (!it || it.video) return;
+  prog += 0.01;
+  if (prog >= 1) nextItem(); else paintSegs();
+}
+
+function nextItem() {
+  if (ii < CAMPS[ci].items.length - 1) { ii++; prog = 0; render(); }
+  else closeViewer(true);
+}
+function prevItem() {
+  if (ii > 0) { ii--; prog = 0; render(); }
+  else { prog = 0; if (!cur().video) paintSegs(); else { try { vMedia.currentTime = 0; } catch (e) {} } }
+}
+function nextCampaign() { if (ci < CAMPS.length - 1) { ci++; ii = 0; prog = 0; render(); } }
+function prevCampaign() { if (ci > 0) { ci--; ii = 0; prog = 0; render(); } }
+
+vSound.addEventListener('click', function (e) {
+  e.stopPropagation();
+  muted = !muted;
+  vMedia.muted = muted;
+  vSound.innerHTML = (muted ? MUTE : LOUD).replace(/%S%/g, '22');
+  vSound.setAttribute('aria-label', muted ? 'turn sound on' : 'turn sound off');
+});
+vClose.addEventListener('click', function (e) { e.stopPropagation(); closeViewer(false); });
+
+var g = null;
+viewer.addEventListener('pointerdown', function (e) { g = { x: e.clientX, y: e.clientY }; });
+viewer.addEventListener('pointercancel', function () { g = null; });
+viewer.addEventListener('pointerup', function (e) {
+  var s = g; g = null;
+  if (!s) return;
+  if (e.target.closest && e.target.closest('.ic')) return;
+  var r = viewer.getBoundingClientRect();
+  var dx = e.clientX - s.x, dy = e.clientY - s.y;
+  if (dy > 70 && Math.abs(dy) > Math.abs(dx)) { closeViewer(false); return; }
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) nextCampaign(); else prevCampaign(); return; }
+  if (Math.abs(dx) < 14 && Math.abs(dy) < 14) {
+    var rel = (e.clientX - r.left) / r.width;
+    if (rel < 0.3) prevItem(); else nextItem();
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  if (!open_) return;
+  if (e.key === 'Escape') closeViewer(false);
+  else if (e.key === 'ArrowRight') nextItem();
+  else if (e.key === 'ArrowLeft') prevItem();
+});
+
+window.addEventListener('resize', setVh);
+window.addEventListener('orientationchange', function () { setTimeout(setVh, 200); });
+activate(0);
+})();
+</script>
+</body>
+</html>

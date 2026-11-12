@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Orli Rein, home</title>
 
+<script>
+/* phones go to the feed; ?full=1 opts out for the session */
+(function(){try{
+  if(/[?&]full=1/.test(location.search)){sessionStorage.setItem('fullsite','1');return;}
+  if(sessionStorage.getItem('fullsite'))return;
+  if(window.innerWidth<=820&&window.matchMedia('(pointer:coarse)').matches){location.replace('Live.html');}
+}catch(e){}})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
