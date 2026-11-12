@@ -233,7 +233,11 @@ CAMPS.forEach(function (c, i) {
 
   c.frameEl = s.querySelector('.frame');
   c.chipEl = s.querySelector('.chip.t');
-  s.querySelector('.hit').addEventListener('click', function () { openAt(i, 0); });
+  /* a tap that closed the viewer re-fires as a click on whatever is underneath; ignore it */
+  s.querySelector('.hit').addEventListener('click', function () {
+    if (open_ || Date.now() - closedAt < 700) return;
+    openAt(i, 0);
+  });
   feed.appendChild(s);
 });
 sizeFrames();
@@ -308,7 +312,7 @@ var vMedia = document.getElementById('vMedia'), iMedia = document.getElementById
 var vSegs = document.getElementById('vSegs'), vChip = document.getElementById('vChip');
 var vStk = document.getElementById('vStk'), vClient = document.getElementById('vClient'), vTitle = document.getElementById('vTitle');
 var vSound = document.getElementById('vSound'), vClose = document.getElementById('vClose');
-var open_ = false, ci = 0, ii = 0, prog = 0, muted = false, timer = null;
+var open_ = false, ci = 0, ii = 0, prog = 0, muted = false, timer = null, closedAt = 0;
 
 function cur() { return CAMPS[ci].items[ii]; }
 
@@ -368,6 +372,7 @@ function openAt(c0, i0) {
 
 function closeViewer(advance) {
   open_ = false;
+  closedAt = Date.now();
   viewer.hidden = true;
   clearInterval(timer); timer = null;
   try { vMedia.pause(); } catch (e) {}
