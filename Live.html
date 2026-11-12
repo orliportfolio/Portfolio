@@ -32,8 +32,9 @@ body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoot
 .pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid #17140F;border-radius:999px;background:transparent;color:#17140F;font-size:12px;cursor:pointer}
 .pill:hover,.pill:focus-visible{background:#7A1F2B;color:#F4EFE6;border-color:#7A1F2B;outline:none}
 .cue{display:flex;align-items:center;gap:6px;font-size:11px;color:#17140F}
-@keyframes nudge{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(8px);opacity:1}}
-.cue svg{animation:nudge 1.8s ease-in-out infinite}
+/* travel is centred on the resting line, so the arrow stays aligned with the text */
+@keyframes nudge{0%,100%{transform:translateY(-2px);opacity:.6}50%{transform:translateY(2px);opacity:1}}
+.cue svg{animation:nudge 2.2s ease-in-out infinite}
 .foot{display:flex;justify-content:space-between;align-items:center}
 
 .ctitle{margin:10px 0 0;font-size:clamp(60px,21vw,84px);line-height:.88}
