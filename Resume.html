@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Orli Rein, resume</title>
+<meta name="description" content="Orli Rein's resume is mid-makeover.">
+<meta name="theme-color" content="#EFEBE4">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+*{text-transform:lowercase}
+html,body{margin:0;min-height:100%}
+body{background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  min-height:100dvh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;
+  padding:max(44px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom))}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em}
+.disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:1440px;width:100%;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.kicker{color:#4A433A}
+h1{margin:10px 0 0;font-size:clamp(52px,15vw,120px);line-height:.88;font-style:italic;overflow-wrap:break-word}
+.rule{margin:22px 0 0;height:1px;background:#17140F;opacity:.25}
+.say{margin:22px 0 0;max-width:30em;font-size:clamp(15px,4.4vw,19px);line-height:1.5;color:#4A433A}
+.say em{font-style:normal;color:#17140F}
+.acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;
+  text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;cursor:pointer}
+.solid{background:#17140F;color:#EFEBE4;border:1px solid #17140F}
+.solid:hover,.solid:focus-visible{background:#7A1F2B;border-color:#7A1F2B;outline:none}
+.ghost{background:transparent;color:#17140F;border:1px solid #17140F}
+.ghost:hover,.ghost:focus-visible{background:#7A1F2B;border-color:#7A1F2B;color:#F4EFE6;outline:none}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#17140F;padding-top:24px}
+.foot a{color:#17140F}
+.foot a:hover{color:#7A1F2B}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div>
+<div class="mono kicker">orli rein / resume</div>
+<h1 class="disp">mid&#8209;<br>makeover</h1>
+<div class="rule"></div>
+<p class="say">this one's still on the cutting room floor. <em>it'll be here soon.</em></p>
+<p class="say">in the meantime, the work speaks louder anyway &mdash; or just reach out and ask me anything.</p>
+
+<div class="acts">
+<a class="btn solid" id="back" href="index.html">
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg>
+back to the work
+</a>
+<a class="btn ghost" href="mailto:orlirein8@gmail.com">email me
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6"></path><path d="M5.5 5H11v5.5"></path></svg>
+</a>
+</div>
+</div>
+
+<div class="mono foot">
+<span>&copy; orli rein 2026</span>
+<span><a href="https://www.linkedin.com/in/orlirein" target="_blank" rel="noopener">linkedin</a></span>
+</div>
+
+</div>
+
+<script>
+/* go back where they came from; the href is the fallback */
+document.getElementById('back').addEventListener('click', function (e) {
+  if (document.referrer && history.length > 1) { e.preventDefault(); history.back(); }
+});
+</script>
+</body>
+</html>
