@@ -25,7 +25,8 @@ body{color:#EFEBE4;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoot
 .sheet{background:#EFEBE4;color:#17140F;display:flex;flex-direction:column;justify-content:space-between;padding:max(44px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom))}
 .kicker{font-size:11px;line-height:1.5;color:#4A433A}
 .name{margin:8px 0 0;font-size:clamp(68px,25vw,112px);line-height:.86;color:#17140F}
-.me{display:block;width:100%;height:clamp(130px,20vh,180px);margin-top:16px;object-fit:cover;object-position:50% 14.122%;border-radius:2px;background:#DDD6CA}
+/* height follows the width at the mockup's ratio, so it never letterboxes */
+.me{display:block;width:100%;aspect-ratio:350/170;height:auto;max-height:26vh;margin-top:16px;object-fit:cover;object-position:50% 14.122%;border-radius:2px;background:#DDD6CA}
 .bio{margin-top:16px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.45;color:#4A433A}
 .bio p{margin:0}
 .pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid #17140F;border-radius:999px;background:transparent;color:#17140F;font-size:12px;cursor:pointer}
@@ -90,7 +91,7 @@ noscript .ns{display:block;padding:40px 20px;background:#EFEBE4;color:#17140F}
 @media (max-height:760px){
   .sheet{padding-top:max(30px,env(safe-area-inset-top))}
   .name{font-size:clamp(54px,20vw,88px)}
-  .me{height:clamp(100px,15vh,150px);margin-top:12px}
+  .me{max-height:22vh;margin-top:12px}
   .bio{margin-top:12px;gap:6px;font-size:13px}
   .ctitle{font-size:clamp(46px,16vw,66px)}
   .row{min-height:54px}
@@ -101,7 +102,7 @@ noscript .ns{display:block;padding:40px 20px;background:#EFEBE4;color:#17140F}
 }
 @media (max-height:650px){
   .name{font-size:clamp(46px,17vw,70px)}
-  .me{height:clamp(84px,13vh,120px)}
+  .me{max-height:20vh}
   .bio{font-size:12px;line-height:1.4}
   .below p{display:none}
   .below h2{font-size:clamp(25px,7.5vw,30px)}
