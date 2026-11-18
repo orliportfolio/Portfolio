@@ -3,269 +3,336 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MilkPEP</title>
+<title>MilkPEP campaign</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-*{text-transform:lowercase !important}
-body{margin:0;background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif}
-a{color:#17140F}a:hover{color:#7A1F2B}
-.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
-.cols{column-gap:14px;columns:5 200px}
-.tile{break-inside:avoid;margin:0 0 14px;position:relative;display:block;border-radius:2px;overflow:hidden}
-.tile:hover{outline:3px solid #17140F}
-.tile.vid{box-shadow:0 0 0 8px #EFEBE4,0 0 0 9px #17140F;margin:9px 9px 23px;overflow:visible}
-.a916{aspect-ratio:9/16}.a11{aspect-ratio:1/1}.a169{aspect-ratio:16/9}
-.c0{background:#17140F;color:#EFEBE4}.c1{background:#7A1F2B;color:#F4EFE6}.c2{background:#DDD6CA;color:#17140F}.c3{background:#3A342D;color:#EFEBE4}
-.pill{display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:10px 18px;min-height:24px;border:1px solid #17140F;border-radius:999px;text-decoration:none;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#EFEBE4}
-.pill:hover{background:#7A1F2B;color:#F4EFE6}
-.bx{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:40px;align-items:start;margin-top:28px}
-.bxframe{position:relative;aspect-ratio:2/3;overflow:hidden;border-radius:2px;background:#17140F;user-select:none}
-.bxframe img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain}
-.bxafter{z-index:3}
-.bxline{position:absolute;top:0;bottom:0;width:2px;background:#FAF8F4;z-index:5;box-shadow:0 0 0 1px rgba(23,20,15,.4);pointer-events:none}
-.bxknob{position:absolute;top:50%;left:-17px;width:36px;height:36px;margin-top:-18px;border-radius:50%;background:#FAF8F4;color:#17140F;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(23,20,15,.35)}
-.bxrange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:6;margin:0}
-.bxtag{position:absolute;top:12px;z-index:4;padding:5px 10px;background:#FAF8F4;color:#17140F;border-radius:999px;pointer-events:none}
-.bxtag.l{left:12px}.bxtag.r{right:12px}
-.dot{position:absolute;z-index:2;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:#7A1F2B;color:#F4EFE6;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 0 0 3px #FAF8F4}
-.bxlist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:22px;max-width:440px}
-.bxlist li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16px;line-height:1.5}
-.bxlist b{display:flex;width:28px;height:28px;border-radius:50%;background:#7A1F2B;color:#F4EFE6;align-items:center;justify-content:center;font-size:13px;font-weight:500}
-.bx2{display:grid;grid-template-columns:minmax(0,0.75fr) minmax(0,1.5fr) minmax(0,0.667fr);gap:12px 20px;align-items:start;margin-top:56px}
-.bx2>img{display:block;width:100%;height:auto;border-radius:2px}
-.bx2>.mono{color:#6A6258}
-.bx2>.span2{grid-column:span 2}
-.bx2set{position:relative;border-radius:2px;overflow:hidden}
-.bx2set>img{display:block;width:100%;height:auto}
-.bx2right>img{display:block;width:100%;height:auto;border-radius:2px}
-.bx2right .bxlist{margin-top:28px;max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px}
-@media (max-width:900px){.bx{grid-template-columns:minmax(0,1fr)}.bx2{grid-template-columns:minmax(0,1fr)}.bx2>.span2{grid-column:auto}.bx2right .bxlist{grid-template-columns:minmax(0,1fr)}}
-.pillars{display:flex;flex-direction:column;gap:56px;margin-top:40px;align-items:stretch}
-.pillar{min-width:0;width:100%;flex:none !important;border-left:0;padding-left:0}
-.pcap{padding:10px 0 14px;border-top:6px solid #7A1F2B;margin-top:-1px;color:#17140F}
-.pillar .cols{columns:5 200px;column-gap:14px;margin:0;position:relative}
-.pillar .pshoe{max-width:760px}
-.pillar:only-child{border-left:0;padding-left:0}
-.pillar:only-child .cols{columns:5 200px;column-gap:14px}
-.pshoe{display:grid;grid-template-columns:1.5fr 0.667fr;gap:12px;align-items:start;margin-bottom:14px}
-.pshoe img{display:block;width:100%;height:auto;border-radius:2px}
-@media (max-width:900px){.pillars{flex-direction:column}.pillar{width:100%;flex:none !important}}
-@keyframes show{from{opacity:0}to{opacity:1}}
-.cstack{position:relative;width:100%;aspect-ratio:1/1}
-.pillar.stk .cside .csticker{position:absolute;left:calc(100% + 14px);transform:translateX(-50%) scale(1);transform-origin:50% 50%;transition:transform .25s ease;top:84.5%;width:51%;height:auto;z-index:20;cursor:pointer;border-radius:0}
-.pillar.stk .cside .csticker:hover{transform:translateX(-50%) scale(1.1)}
-.cfr{position:absolute;width:60%;height:auto;border:5px solid #FAF8F4;box-sizing:border-box;box-shadow:0 6px 18px rgba(23,20,15,.28)}
-.pillar.stk{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
-.pillar.stk .cols{columns:1}
-.pillar.stk .cside{grid-column:3;display:flex;flex-direction:column;gap:24px}
-.pillar.stk .cside img{display:block;width:100%;height:auto;border-radius:2px}
-.pillar.stk.hs{grid-template-columns:minmax(0,1.3fr) minmax(0,0.731fr) minmax(0,0.731fr);align-items:start}
-.pillar.stk.hs .sw{position:relative}
-.pillar.stk.hs .cside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;grid-column:2 / span 2;grid-row:1;margin-bottom:0}
-.pillar.stk.hs .cstack{grid-column:1;grid-row:1}
-.pillar.stk.hs .cols{grid-column:3;grid-row:1}
-.cn0{left:2%;top:2%;animation:show .01s linear 0.00s both,cf0 7.2s linear infinite}
-.cn1{left:36%;top:6%;animation:show .01s linear 0.90s both,cf1 7.2s linear infinite}
-.cn2{left:4%;top:24%;animation:show .01s linear 1.80s both,cf2 7.2s linear infinite}
-.cn3{left:37%;top:30%;animation:show .01s linear 2.70s both,cf3 7.2s linear infinite}
-.cn4{left:6%;top:46%;animation:show .01s linear 3.60s both,cf4 7.2s linear infinite}
-.cn5{left:36%;top:52%;animation:show .01s linear 4.50s both,cf5 7.2s linear infinite}
-.cn6{left:30%;top:8%;animation:show .01s linear 5.40s both,cf6 7.2s linear infinite}
-.cn7{left:5%;top:10%;animation:show .01s linear 6.30s both,cf7 7.2s linear infinite}
-@keyframes cf0{0.00%{transform:translate(0,-28px) rotate(1deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}8.50%{transform:translate(0,0) rotate(-3deg);z-index:8}12.49%{transform:translate(0,0) rotate(-3deg);z-index:8}12.50%{transform:translate(0,0) rotate(-3deg);z-index:7}24.99%{transform:translate(0,0) rotate(-3deg);z-index:7}25.00%{transform:translate(0,0) rotate(-3deg);z-index:6}37.49%{transform:translate(0,0) rotate(-3deg);z-index:6}37.50%{transform:translate(0,0) rotate(-3deg);z-index:5}49.99%{transform:translate(0,0) rotate(-3deg);z-index:5}50.00%{transform:translate(0,0) rotate(-3deg);z-index:4}62.49%{transform:translate(0,0) rotate(-3deg);z-index:4}62.50%{transform:translate(0,0) rotate(-3deg);z-index:3}74.99%{transform:translate(0,0) rotate(-3deg);z-index:3}75.00%{transform:translate(0,0) rotate(-3deg);z-index:2}87.49%{transform:translate(0,0) rotate(-3deg);z-index:2}87.50%{transform:translate(0,0) rotate(-3deg);z-index:1}99.99%{transform:translate(0,0) rotate(-3deg);z-index:1}}
-@keyframes cf1{0.00%{transform:translate(0,0) rotate(3deg);z-index:1}12.49%{transform:translate(0,0) rotate(3deg);z-index:1}12.50%{transform:translate(0,-28px) rotate(7deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}21.00%{transform:translate(0,0) rotate(3deg);z-index:8}24.99%{transform:translate(0,0) rotate(3deg);z-index:8}25.00%{transform:translate(0,0) rotate(3deg);z-index:7}37.49%{transform:translate(0,0) rotate(3deg);z-index:7}37.50%{transform:translate(0,0) rotate(3deg);z-index:6}49.99%{transform:translate(0,0) rotate(3deg);z-index:6}50.00%{transform:translate(0,0) rotate(3deg);z-index:5}62.49%{transform:translate(0,0) rotate(3deg);z-index:5}62.50%{transform:translate(0,0) rotate(3deg);z-index:4}74.99%{transform:translate(0,0) rotate(3deg);z-index:4}75.00%{transform:translate(0,0) rotate(3deg);z-index:3}87.49%{transform:translate(0,0) rotate(3deg);z-index:3}87.50%{transform:translate(0,0) rotate(3deg);z-index:2}99.99%{transform:translate(0,0) rotate(3deg);z-index:2}}
-@keyframes cf2{0.00%{transform:translate(0,0) rotate(-2deg);z-index:2}12.49%{transform:translate(0,0) rotate(-2deg);z-index:2}12.50%{transform:translate(0,0) rotate(-2deg);z-index:1}24.99%{transform:translate(0,0) rotate(-2deg);z-index:1}25.00%{transform:translate(0,-28px) rotate(2deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}33.50%{transform:translate(0,0) rotate(-2deg);z-index:8}37.49%{transform:translate(0,0) rotate(-2deg);z-index:8}37.50%{transform:translate(0,0) rotate(-2deg);z-index:7}49.99%{transform:translate(0,0) rotate(-2deg);z-index:7}50.00%{transform:translate(0,0) rotate(-2deg);z-index:6}62.49%{transform:translate(0,0) rotate(-2deg);z-index:6}62.50%{transform:translate(0,0) rotate(-2deg);z-index:5}74.99%{transform:translate(0,0) rotate(-2deg);z-index:5}75.00%{transform:translate(0,0) rotate(-2deg);z-index:4}87.49%{transform:translate(0,0) rotate(-2deg);z-index:4}87.50%{transform:translate(0,0) rotate(-2deg);z-index:3}99.99%{transform:translate(0,0) rotate(-2deg);z-index:3}}
-@keyframes cf3{0.00%{transform:translate(0,0) rotate(4deg);z-index:3}12.49%{transform:translate(0,0) rotate(4deg);z-index:3}12.50%{transform:translate(0,0) rotate(4deg);z-index:2}24.99%{transform:translate(0,0) rotate(4deg);z-index:2}25.00%{transform:translate(0,0) rotate(4deg);z-index:1}37.49%{transform:translate(0,0) rotate(4deg);z-index:1}37.50%{transform:translate(0,-28px) rotate(8deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}46.00%{transform:translate(0,0) rotate(4deg);z-index:8}49.99%{transform:translate(0,0) rotate(4deg);z-index:8}50.00%{transform:translate(0,0) rotate(4deg);z-index:7}62.49%{transform:translate(0,0) rotate(4deg);z-index:7}62.50%{transform:translate(0,0) rotate(4deg);z-index:6}74.99%{transform:translate(0,0) rotate(4deg);z-index:6}75.00%{transform:translate(0,0) rotate(4deg);z-index:5}87.49%{transform:translate(0,0) rotate(4deg);z-index:5}87.50%{transform:translate(0,0) rotate(4deg);z-index:4}99.99%{transform:translate(0,0) rotate(4deg);z-index:4}}
-@keyframes cf4{0.00%{transform:translate(0,0) rotate(-4deg);z-index:4}12.49%{transform:translate(0,0) rotate(-4deg);z-index:4}12.50%{transform:translate(0,0) rotate(-4deg);z-index:3}24.99%{transform:translate(0,0) rotate(-4deg);z-index:3}25.00%{transform:translate(0,0) rotate(-4deg);z-index:2}37.49%{transform:translate(0,0) rotate(-4deg);z-index:2}37.50%{transform:translate(0,0) rotate(-4deg);z-index:1}49.99%{transform:translate(0,0) rotate(-4deg);z-index:1}50.00%{transform:translate(0,-28px) rotate(0deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}58.50%{transform:translate(0,0) rotate(-4deg);z-index:8}62.49%{transform:translate(0,0) rotate(-4deg);z-index:8}62.50%{transform:translate(0,0) rotate(-4deg);z-index:7}74.99%{transform:translate(0,0) rotate(-4deg);z-index:7}75.00%{transform:translate(0,0) rotate(-4deg);z-index:6}87.49%{transform:translate(0,0) rotate(-4deg);z-index:6}87.50%{transform:translate(0,0) rotate(-4deg);z-index:5}99.99%{transform:translate(0,0) rotate(-4deg);z-index:5}}
-@keyframes cf5{0.00%{transform:translate(0,0) rotate(2deg);z-index:5}12.49%{transform:translate(0,0) rotate(2deg);z-index:5}12.50%{transform:translate(0,0) rotate(2deg);z-index:4}24.99%{transform:translate(0,0) rotate(2deg);z-index:4}25.00%{transform:translate(0,0) rotate(2deg);z-index:3}37.49%{transform:translate(0,0) rotate(2deg);z-index:3}37.50%{transform:translate(0,0) rotate(2deg);z-index:2}49.99%{transform:translate(0,0) rotate(2deg);z-index:2}50.00%{transform:translate(0,0) rotate(2deg);z-index:1}62.49%{transform:translate(0,0) rotate(2deg);z-index:1}62.50%{transform:translate(0,-28px) rotate(6deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}71.00%{transform:translate(0,0) rotate(2deg);z-index:8}74.99%{transform:translate(0,0) rotate(2deg);z-index:8}75.00%{transform:translate(0,0) rotate(2deg);z-index:7}87.49%{transform:translate(0,0) rotate(2deg);z-index:7}87.50%{transform:translate(0,0) rotate(2deg);z-index:6}99.99%{transform:translate(0,0) rotate(2deg);z-index:6}}
-@keyframes cf6{0.00%{transform:translate(0,0) rotate(-3deg);z-index:6}12.49%{transform:translate(0,0) rotate(-3deg);z-index:6}12.50%{transform:translate(0,0) rotate(-3deg);z-index:5}24.99%{transform:translate(0,0) rotate(-3deg);z-index:5}25.00%{transform:translate(0,0) rotate(-3deg);z-index:4}37.49%{transform:translate(0,0) rotate(-3deg);z-index:4}37.50%{transform:translate(0,0) rotate(-3deg);z-index:3}49.99%{transform:translate(0,0) rotate(-3deg);z-index:3}50.00%{transform:translate(0,0) rotate(-3deg);z-index:2}62.49%{transform:translate(0,0) rotate(-3deg);z-index:2}62.50%{transform:translate(0,0) rotate(-3deg);z-index:1}74.99%{transform:translate(0,0) rotate(-3deg);z-index:1}75.00%{transform:translate(0,-28px) rotate(1deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}83.50%{transform:translate(0,0) rotate(-3deg);z-index:8}87.49%{transform:translate(0,0) rotate(-3deg);z-index:8}87.50%{transform:translate(0,0) rotate(-3deg);z-index:7}99.99%{transform:translate(0,0) rotate(-3deg);z-index:7}}
-@keyframes cf7{0.00%{transform:translate(0,0) rotate(3deg);z-index:7}12.49%{transform:translate(0,0) rotate(3deg);z-index:7}12.50%{transform:translate(0,0) rotate(3deg);z-index:6}24.99%{transform:translate(0,0) rotate(3deg);z-index:6}25.00%{transform:translate(0,0) rotate(3deg);z-index:5}37.49%{transform:translate(0,0) rotate(3deg);z-index:5}37.50%{transform:translate(0,0) rotate(3deg);z-index:4}49.99%{transform:translate(0,0) rotate(3deg);z-index:4}50.00%{transform:translate(0,0) rotate(3deg);z-index:3}62.49%{transform:translate(0,0) rotate(3deg);z-index:3}62.50%{transform:translate(0,0) rotate(3deg);z-index:2}74.99%{transform:translate(0,0) rotate(3deg);z-index:2}75.00%{transform:translate(0,0) rotate(3deg);z-index:1}87.49%{transform:translate(0,0) rotate(3deg);z-index:1}87.50%{transform:translate(0,-28px) rotate(7deg);z-index:8;animation-timing-function:cubic-bezier(.2,.9,.25,1)}96.00%{transform:translate(0,0) rotate(3deg);z-index:8}99.99%{transform:translate(0,0) rotate(3deg);z-index:8}}
-@media (max-width:900px){.pillar.stk,.pillar.stk.hs{grid-template-columns:minmax(0,1fr)}.pillar.stk.hs .cstack,.pillar.stk.hs .cside,.pillar.stk.hs .cols{grid-column:auto !important;grid-row:auto !important}}
-@media (prefers-reduced-motion:reduce){.cfr{animation:none !important;opacity:1}}
-@property --s{syntax:'<number>';inherits:true;initial-value:0}
-.peel{--s:0;position:absolute;left:calc(100% - 151px);top:6px;width:147px;height:147px;z-index:50;cursor:default;filter:drop-shadow(0 6px 10px rgba(23,20,15,.22));transition:--s .5s cubic-bezier(.3,1.3,.5,1),transform .5s cubic-bezier(.3,1.3,.5,1);-webkit-tap-highlight-color:transparent}
-.peel:hover{--s:88;transform:rotate(4deg) scale(1.05)}
-.peel img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
-.peel .pb{clip-path:polygon(0 0,147px 0,147px 147px,calc(var(--s) * 1px) 147px,0 calc((147 - var(--s)) * 1px))}
-.peel .pf{position:absolute;inset:0;transform-origin:0 0;transform:matrix(0,1,1,0,calc(var(--s) - 147),calc(147 - var(--s)));filter:drop-shadow(0 0 3px rgba(23,20,15,.35))}
-.peel .pf img{filter:brightness(0) invert(.93);clip-path:polygon(0 calc((147 - var(--s)) * 1px),calc(var(--s) * 1px) 147px,0 147px)}
-@media (prefers-reduced-motion:reduce){.peel,.peel:hover{transition:none}}
-.cms{position:absolute;left:612px;top:50%;transform:translateY(-50%);width:780px;height:435px;z-index:40}
-.cm{--r:0deg;position:absolute;height:auto;display:block;transform-origin:50% 50%;transform:rotate(var(--r));transition:transform .25s cubic-bezier(.3,1.4,.5,1),filter .25s ease;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 4px 8px rgba(23,20,15,.16))}
-.cm:nth-child(6n+1){--r:-2.2deg}.cm:nth-child(6n+2){--r:1.4deg}.cm:nth-child(6n+3){--r:-1deg}.cm:nth-child(6n+4){--r:2deg}.cm:nth-child(6n+5){--r:-1.6deg}.cm:nth-child(6n){--r:1deg}
-.cm:hover{transform:rotate(0deg) scale(1.1);z-index:60;filter:drop-shadow(0 8px 14px rgba(23,20,15,.28))}
-@media (prefers-reduced-motion:reduce){.cm{transition:none}}
-/*mob*/
+*{text-transform:lowercase}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:hidden}
+body{margin:0;background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
 img,video{max-width:100%}
-@media (hover:none){.tile:hover,.cm:hover{outline:none}}
+a{color:#17140F}a:hover{color:#7A1F2B}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
+.disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:1440px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;margin:0 0 0 -20px;font-size:14px;text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;letter-spacing:.06em}
+.pill{text-decoration:none;display:inline-flex;align-items:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;padding:6px 16px;min-height:40px;border:1px solid #17140F;border-radius:999px;background:#EFEBE4}
+.pill:hover{background:#7A1F2B;color:#F4EFE6}
+h2.disp{font-size:56px;line-height:1;margin:0}
+.credits{margin:26px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border-top:1px solid #17140F;padding-top:20px}
+@media (max-width:760px){.credits{grid-template-columns:minmax(0,1fr);gap:16px}}
+.vidtile{position:relative;border-radius:2px;overflow:hidden;background:#17140F;box-shadow:0 0 0 8px #FAF8F4,0 0 0 9px #17140F}
+.vidtile video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#17140F}
+
+/* carl's not a mess: an overlapping pile rather than a grid. each card keeps its
+   own place and tilt; the cursor brings whichever one it is over to the front */
+.pile{position:relative;height:500px;margin:34px auto 0}
+.pc{position:absolute;display:block;left:var(--x);top:var(--y);width:var(--w);z-index:var(--z);border-radius:2px;overflow:hidden;background:#DDD6CA;transform:translate(-50%,-50%) rotate(var(--r));box-shadow:0 8px 20px rgba(23,20,15,.17);transition:transform .34s cubic-bezier(.2,.8,.25,1),box-shadow .34s ease}
+.pc.round{border-radius:50%}
+.pc img{display:block;width:100%;height:auto}
+.pc:hover{z-index:40;transform:translate(-50%,-50%) rotate(calc(var(--r) * .18)) scale(1.09);box-shadow:0 26px 52px rgba(23,20,15,.34)}
+/* the sticker peels: the artwork loses its bottom-right wedge on a diagonal and a
+   flap of its pale backing unfolds into the gap along the same line */
+.pc.round img{clip-path:polygon(0 0,100% 0,100% 100%,100% 100%,0 100%);transition:clip-path .36s cubic-bezier(.2,.8,.25,1)}
+.pc.round::after{content:'';position:absolute;inset:0;background:linear-gradient(315deg,#FFFDF9 0%,#F1EBE1 44%,#D2C9BA 100%);clip-path:polygon(100% 100%,100% 100%,100% 100%);transition:clip-path .36s cubic-bezier(.2,.8,.25,1);filter:drop-shadow(-3px -3px 6px rgba(23,20,15,.3))}
+.pc.round:hover{transform:translate(-50%,-50%) rotate(calc(var(--r) * .5)) scale(1.05);box-shadow:0 16px 30px rgba(23,20,15,.26)}
+.pc.round:hover img{clip-path:polygon(0 0,100% 0,100% 58%,58% 100%,0 100%)}
+.pc.round:hover::after{clip-path:polygon(100% 58%,58% 100%,58% 58%)}
+
+/* every woman's marathon: the comments are typeset, not screenshotted, so the text
+   stays sharp at any size. text-transform is switched off because the page is
+   globally lowercase and these are other people's words */
+@keyframes floatUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ewm{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start;margin-top:28px}
+.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.films .vidtile{aspect-ratio:9/16;margin:0}
+.stream{position:relative;height:640px;overflow:hidden;display:flex;align-items:flex-start;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 11%,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 11%,#000 88%,transparent 100%)}
+.track{display:block;width:264px;flex:none;animation:floatUp 58s linear infinite;will-change:transform}
+.t2{margin-left:12px;margin-top:70px;animation-duration:74s}
+.stream:hover .track{animation-play-state:paused}
+.dot{width:7px;height:7px;border-radius:50%;background:#7A1F2B;animation:pulse 1.9s ease-in-out infinite;flex:none}
+.cmt{background:#fff;border-radius:16px;padding:13px 15px 12px;margin-bottom:14px;box-shadow:0 2px 10px rgba(23,20,15,.085),0 0 0 1px rgba(23,20,15,.045)}
+.cmt,.cmt *{text-transform:none}
+.chd{display:flex;align-items:center;gap:8px;margin-bottom:7px;min-width:0}
+.av{width:30px;height:30px;border-radius:50%;display:block;flex:none;background:#DDD6CA}
+.hnd{font-size:12.5px;font-weight:500;line-height:1.2;letter-spacing:-.005em;min-width:0}
+.ctx{margin:0;font-size:13px;line-height:1.5;color:#2A241B}
+.clk{display:flex;align-items:center;gap:5px;margin-top:9px;font-family:'DM Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.04em;color:#8A7F6E}
+
+.nxt{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;color:#17140F;min-height:44px}
+.nxt:hover{color:#7A1F2B}
+.nxt svg{transition:transform .28s cubic-bezier(.2,.8,.25,1)}
+.nxt:hover svg{transform:translateX(6px)}
+
 @media (max-width:900px){
-div[style*="max-width: 1440px"]{padding-left:20px !important;padding-right:20px !important}
-h2.disp{font-size:40px !important}
-.cols{columns:3;column-gap:12px}
-.pg-body{min-height:0 !important;height:auto !important}
+.wrap{padding-left:20px;padding-right:20px}
+h1.disp{font-size:72px !important}
+h2.disp{font-size:40px}
+/* the pile needs room it does not have on a phone, so it lays down as a grid */
+.pile{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.pc{position:static;width:auto;transform:none;box-shadow:0 4px 12px rgba(23,20,15,.14)}
+.pc:hover,.pc.round:hover{transform:none;box-shadow:0 4px 12px rgba(23,20,15,.14)}
+.pc.round{grid-column:1 / -1;justify-self:center;width:46%}
+.ewm{grid-template-columns:minmax(0,1fr)}
+.stream{height:520px}
 }
 @media (max-width:600px){
-.cols{columns:2;column-gap:10px}
-h2.disp{font-size:34px !important}
+h2.disp{font-size:34px}
+.track{width:230px}
+.t2{display:none}
 }
-@media (max-width:900px){
-.cms{position:relative !important;left:auto !important;top:auto !important;transform:none !important;width:100% !important;height:auto !important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
-.cms .cm{position:relative !important;left:auto !important;top:auto !important;width:100% !important}
-.pillar.stk .cside .csticker{position:relative !important;left:auto !important;top:auto !important;transform:none !important;width:60% !important;margin:0 auto}
-.pillar .cols,.pillar.stk .cols{columns:2}
-.cms{margin-bottom:28px}
-.pillar .pshoe{max-width:none}
-.bxrange{touch-action:pan-y}
-}
-@media (max-width:600px){.pillar .cols{columns:2}}
-@media (max-width:900px){
-.peel,.peel:hover{left:auto !important;right:4px !important;top:auto !important;bottom:2px !important;transform:scale(.62);transform-origin:100% 100%}
-.peel:hover{--s:88}
-}
+@media (prefers-reduced-motion:reduce){.track,.dot{animation:none}.pc,.pc.round img,.pc.round::after,.nxt svg{transition:none}}
 </style>
 
 </head>
 <body>
 
+<div style="border-top: 1px solid #17140F">
 
-<div style="max-width: 1440px; margin: 0 auto; padding: 24px 32px 0; box-sizing: border-box">
-
-<div class="mono" style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
-<a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;margin:-8px 0 0 -20px;font-size:14px;text-decoration:none;position:relative;z-index:10;cursor:pointer">← Orli Rein</a>
-<span>Client 02 of 03</span>
+<div class="wrap" style="padding-top: 24px">
+<div class="mono" style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center">
+<a class="back" href="index.html">&larr; orli rein</a>
+<span style="color: #4A433A">client 02 of 03</span>
 </div>
 
-<h1 class="disp" style="margin: 24px 0 0; font-size: clamp(56px, 15vw, 220px); line-height: 0.86; text-transform: uppercase; letter-spacing: -0.02em">MilkPEP</h1>
+<h1 class="disp" style="margin: 10px 0 0; font-size: 110px; line-height: 0.9">milkpep</h1>
 
-<div style="display: flex; flex-wrap: wrap; gap: 32px 48px; margin-top: 40px; padding: 20px 0; border-top: 1px solid #17140F; border-bottom: 1px solid #17140F; position: relative">
-<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Client</div><div style="margin-top: 6px; font-size: 18px">MilkPEP</div></div>
-<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">My role</div><div style="margin-top: 6px; font-size: 18px">producer (social + experiential) · dp · editor</div></div>
-<div style="flex: 1 1 160px"><div class="mono" style="color: #6A6258">Agency role</div><div style="margin-top: 6px; font-size: 18px">Integrated Agency of Record</div></div>
+<dl class="credits">
+<div>
+<dt class="mono" style="font-size: 11px; color: #4A433A">client</dt>
+<dd class="disp" style="margin: 6px 0 0; font-style: italic; font-size: 24px; line-height: 1.15">milkpep</dd>
 </div>
+<div>
+<dt class="mono" style="font-size: 11px; color: #4A433A">my role</dt>
+<dd class="disp" style="margin: 6px 0 0; font-style: italic; font-size: 24px; line-height: 1.15">producer (social + experiential) &middot; dp &middot; editor</dd>
+</div>
+<div>
+<dt class="mono" style="font-size: 11px; color: #4A433A">agency role</dt>
+<dd class="disp" style="margin: 6px 0 0; font-style: italic; font-size: 24px; line-height: 1.15">integrated agency of record</dd>
+</div>
+</dl>
 
-<div class="mono" style="color: #6A6258; margin-top: 32px">Highlighted campaigns</div>
+<div class="mono" style="margin-top: 28px; font-size: 11px; color: #4A433A">highlighted campaigns</div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px">
-
-<a class="pill" href="#gnm">carl's not a mess </a>
-
-<a class="pill" href="#ewm">Every Woman’s Marathon</a>
-
+<a class="pill" href="#gnm">carl&rsquo;s not a mess</a>
+<a class="pill" href="#ewm">every woman&rsquo;s marathon</a>
 </div>
 </div>
 
-<div class="pg-body" style="max-width: 1440px; margin: 0 auto; padding: 24px 32px 64px; box-sizing: border-box; position: relative; min-height: 1723px">
+<div class="wrap" style="padding-top: 24px; padding-bottom: 64px">
 
 <section id="gnm" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px; position: relative">
-<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">carl's not a mess </h2>
-<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Bravo’s Summer House Season 9 reunion was one of the year’s most talked-about reality TV moments. We tapped into the cultural buzz by hosting a live viewing with the cast and using the moment to spotlight milk’s nutritional benefits.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp">carl&rsquo;s not a mess</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">bravo&rsquo;s summer house season 9 reunion was one of the year&rsquo;s most talked-about reality tv moments. we tapped into the cultural buzz by hosting a live viewing with the cast and using the moment to spotlight milk&rsquo;s nutritional benefits.</p>
 </div>
 
-<div class="pillars">
-
-<div class="pillar stk hs" style="flex: 1 1 0%">
-
-
-
-
-<div class="cstack">
-
-<img class="cfr cn0" src="assets/a03fa3cd5ba05c9400abb9da4b210140.jpg" alt="Carl’s Not a Mess, watching the screening">
-
-<img class="cfr cn1" src="assets/1d0e4ed611218b819191a605709bab7e.jpg" alt="Cheers with Carl’s Not a Mess">
-
-<img class="cfr cn2" src="assets/79243cafe028428d3ee9c76369f5665b.jpg" alt="Rooftop crowd at the screening">
-
-<img class="cfr cn3" src="assets/6eab66b664288075b89cde47fb2b244f.jpg" alt="Group photo on the rooftop">
-
-<img class="cfr cn4" src="assets/efbcb98f0126f531d3dacaf926c5416f.jpg" alt="Selfie with Carl’s Not a Mess cocktail">
-
-<img class="cfr cn5" src="assets/f08b1a3406b01b50201f86b226b52646.jpg" alt="DJ at the Carl’s Not a Mess booth">
-
-<img class="cfr cn6" src="assets/88ac2f8fca2f507c283f7c314e82b711.jpg" alt="Welcome sign guests">
-
-<img class="cfr cn7" src="assets/bbb9e4361a12fa2e1274f2a9ec466664.jpg" alt="Toast with Carl’s Not a Mess">
-
-<div class="peel"><img class="pb" src="assets/62fba3b358a3d9ccddaf10eda3a58899.png" alt="Dairy Milk’s nutrients can help support mental wellbeing coaster sticker"><span class="pf"><img src="assets/62fba3b358a3d9ccddaf10eda3a58899.png" alt=""></span></div>
-</div>
-
-
-<div class="cside">
-
-<div class="sw">
-<img src="assets/f08d681ae7dd54785268e8da379bf3dd.jpg" alt="Instagram story from the Carl’s Not a Mess screening">
-</div>
-
-<div class="sw">
-<img src="assets/a130be6394b3d83c4c3ed08a612ea0ae.jpg" alt="Instagram story of Carl and Kyle toasting at the screening">
-</div>
-
-</div>
-
-<div class="cols">
-
-
-</div>
-</div>
-
+<div class="pile">
+<span class="pc" style="--x:88%;--y:64%;--w:22%;--r:-1.6deg;--z:1"><img src="assets/79243cafe028428d3ee9c76369f5665b.jpg" alt="rooftop crowd at the screening"></span>
+<span class="pc" style="--x:84%;--y:33%;--w:24%;--r:1.7deg;--z:2"><img src="assets/f08b1a3406b01b50201f86b226b52646.jpg" alt="dj at the carl’s not a mess booth"></span>
+<span class="pc" style="--x:52%;--y:31%;--w:24%;--r:3.0deg;--z:3"><img src="assets/6eab66b664288075b89cde47fb2b244f.jpg" alt="group photo on the rooftop"></span>
+<span class="pc" style="--x:12%;--y:33%;--w:24%;--r:-3.2deg;--z:4"><img src="assets/a03fa3cd5ba05c9400abb9da4b210140.jpg" alt="carl’s not a mess, watching the screening"></span>
+<span class="pc" style="--x:47%;--y:66%;--w:23%;--r:-2.4deg;--z:5"><img src="assets/efbcb98f0126f531d3dacaf926c5416f.jpg" alt="selfie with carl’s not a mess cocktail"></span>
+<span class="pc" style="--x:18%;--y:67%;--w:15.5%;--r:2.6deg;--z:6"><img src="assets/88ac2f8fca2f507c283f7c314e82b711.jpg" alt="welcome sign guests"></span>
+<span class="pc" style="--x:69%;--y:36%;--w:15.5%;--r:-2.8deg;--z:7"><img src="assets/bbb9e4361a12fa2e1274f2a9ec466664.jpg" alt="toast with carl’s not a mess"></span>
+<span class="pc" style="--x:29%;--y:28%;--w:25%;--r:2.0deg;--z:8"><img src="assets/1d0e4ed611218b819191a605709bab7e.jpg" alt="cheers with carl’s not a mess"></span>
+<span class="pc round" style="--x:7%;--y:12%;--w:8%;--r:2.2deg;--z:9"><img src="assets/62fba3b358a3d9ccddaf10eda3a58899.png" alt="dairy milk’s nutrients can help support mental wellbeing"></span>
+<span class="pc" style="--x:36%;--y:70%;--w:12.5%;--r:-2.3deg;--z:10"><img src="assets/f08d681ae7dd54785268e8da379bf3dd.jpg" alt="instagram story from the carl’s not a mess screening"></span>
+<span class="pc" style="--x:77%;--y:70%;--w:12.5%;--r:1.9deg;--z:11"><img src="assets/a130be6394b3d83c4c3ed08a612ea0ae.jpg" alt="instagram story of carl and kyle toasting at the screening"></span>
 </div>
 </section>
 
 <section id="ewm" style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #17140F">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px; position: relative">
-<h2 class="disp" style="margin: 0; font-size: 56px; line-height: 1">Every Woman’s Marathon</h2>
-<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">Milk stepped into endurance sports with Every Woman’s Marathon, a race created to celebrate and empower women in running. To build community and drive sign-ups, we created Rookie Route, a raw, unfiltered social series following first-time marathon runners from all walks of life through six months of training.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px 48px">
+<h2 class="disp">every woman&rsquo;s marathon</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: #4A433A">milk stepped into endurance sports with every woman&rsquo;s marathon, a race created to celebrate and empower women in running. to build community and drive sign-ups, we created rookie route, a raw, unfiltered social series following first-time marathon runners from all walks of life through six months of training.</p>
 </div>
 
-<div class="pillars">
-
-<div class="pillar " style="flex: 2.2 1 0%">
-
-
-
-
-
-<div class="cols">
-
-<div class="cms" aria-label="Comments on Rookie Route"><img class="cm" src="assets/803163f792ef5848df164c9d4254a20f.webp" alt="Instagram comment" style="left: 1.070%; top: 0.000%; width: 28.580%"><img class="cm" src="assets/7eb15cfc1c1259038781817b3a129f36.webp" alt="Instagram comment" style="left: 29.412%; top: 0.535%; width: 29.887%"><img class="cm" src="assets/36e344d57cdac44f8e88da8361ef87b3.webp" alt="Instagram comment" style="left: 59.121%; top: 0.428%; width: 39.869%"><img class="cm" src="assets/bdd5c3361a03a9d41fb5b51814380458.webp" alt="Instagram comment" style="left: 30.006%; top: 16.364%; width: 35.888%"><img class="cm" src="assets/ba2d71a95c0c50ddfcb3e9b0f277fcf5.webp" alt="Instagram comment" style="left: 65.835%; top: 16.684%; width: 31.848%"><img class="cm" src="assets/01111f2ec5a757fa9700c592ddb2ef11.webp" alt="Instagram comment" style="left: 1.545%; top: 32.620%; width: 31.135%"><img class="cm" src="assets/467debeaf103966ea52e8a7a8bb8564e.webp" alt="Instagram comment" style="left: 32.501%; top: 33.048%; width: 34.284%"><img class="cm" src="assets/77a6aca5ec0235c1b9fdd08822f575bf.webp" alt="Instagram comment" style="left: 66.548%; top: 32.299%; width: 32.026%"><img class="cm" src="assets/bc274e8044972af6f1f41a896c2ce108.webp" alt="Instagram comment" style="left: 1.248%; top: 47.914%; width: 31.491%"><img class="cm" src="assets/70ab3200692720ef082a459b980f4c4d.webp" alt="Instagram comment" style="left: 32.561%; top: 51.123%; width: 32.501%"><img class="cm" src="assets/6ad0b0dd1e44e39b65b0f3673d7d1281.webp" alt="Instagram comment" style="left: 66.904%; top: 50.481%; width: 31.907%"><img class="cm" src="assets/fd7f13e62329c0fa7ce5e7e2bc86fa98.webp" alt="Instagram comment" style="left: 1.188%; top: 67.594%; width: 29.887%"><img class="cm" src="assets/ae9689d36d618032f7e1cffb2a683b72.webp" alt="Instagram comment" style="left: 31.135%; top: 67.594%; width: 33.809%"><img class="cm" src="assets/dd1daba3ee16b6590705785ea60ed7b4.webp" alt="Instagram comment" style="left: 64.646%; top: 64.278%; width: 34.641%"><img class="cm" src="assets/7f25760a4986913bc09b3575bcaae975.webp" alt="Instagram comment" style="left: 1.307%; top: 81.818%; width: 29.471%"><img class="cm" src="assets/c5a008b74e54a4cd3ae9ea8a6ef4467c.webp" alt="Instagram comment" style="left: 30.778%; top: 82.139%; width: 31.491%"><img class="cm" src="assets/43456efbf0e8c72a51327acb2ade77de.webp" alt="Instagram comment" style="left: 62.389%; top: 83.743%; width: 36.720%"></div>
-
-
-
-<div class="tile a916 vid c0">
-<video src="assets/32fafa4c1ae1a2f6dce9cb74597dd648.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+<div class="ewm">
+<div class="films">
+<div class="vidtile"><video src="assets/32fafa4c1ae1a2f6dce9cb74597dd648.mp4#t=0.5" controls playsinline preload="metadata"></video></div>
+<div class="vidtile"><video src="assets/c71f544f91b59fe0ea823e14a83fd1e2.mp4#t=0.5" controls playsinline preload="metadata"></video></div>
 </div>
 
-
-
-
-<div class="tile a916 vid c0">
-<video src="assets/c71f544f91b59fe0ea823e14a83fd1e2.mp4" controls="" playsinline="" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #17140F"></video>
+<div>
+<div style="display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #4A433A">
+<span class="dot"></span>from the comments
 </div>
-
-
-
+<div class="stream">
+<div class="track">
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-0.png" alt=""><span class="hnd">Pagielee</span></div>
+<p class="ctx">You’re awesome. I’m 38 and I started running has a hobby this year. Then I started signing up for races and the feeling of getting that medal at the end was such and accomplishment. Running my 1st marathon this weekend in Long Beach then doing Every Women’s Marathon as my 2nd full marathon in November.</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>65</div>
+</div>
+<div class="cmt" style="margin-left: 10px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-2.png" alt=""><span class="hnd">May | Runner 🏃‍♀️</span></div>
+<p class="ctx">may this friendship find me 💗</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>649</div>
+</div>
+<div class="cmt" style="margin-left: 4px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-4.png" alt=""><span class="hnd">karlysmiles</span></div>
+<p class="ctx">Goals ........ can’t wait to run my first marathon. Rooting for you girly</p>
+</div>
+<div class="cmt" style="margin-left: 12px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-6.png" alt=""><span class="hnd">Aaron Deets</span></div>
+<p class="ctx">Needed this video today Donna! Thanks for sharing your content 💕</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 2px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-8.png" alt=""><span class="hnd">lindamjam</span></div>
+<p class="ctx">Thanks for the encouraging post! I had a hamstring minor tweak at week 4 which had set me back. I’m going for 15 this Sat🙏👌</p>
+</div>
+<div class="cmt" style="margin-left: 8px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-10.png" alt=""><span class="hnd">brea</span></div>
+<p class="ctx">wow this is the sweetest!</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>1</div>
+</div>
+<div class="cmt" style="margin-left: 6px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-12.png" alt=""><span class="hnd">Kat • Life in Japan🗾</span></div>
+<p class="ctx">This made me emotional ❤️</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-14.png" alt=""><span class="hnd">jillybeanrun1212</span></div>
+<p class="ctx">You’ve got this. It’s taper week so just do low key exercises and get lots of rest a couple days before 🥹👏</p>
+</div>
+<div class="cmt" style="margin-left: 14px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-16.png" alt=""><span class="hnd">e4trackandfield</span><svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="flex:none"><path d="M8 .9l1.8 1.5 2.3-.3.6 2.2 2 1.2-1 2.1 1 2.1-2 1.2-.6 2.2-2.3-.3L8 14.3l-1.8-1.5-2.3.3-.6-2.2-2-1.2 1-2.1-1-2.1 2-1.2.6-2.2 2.3.3z" fill="#3797F0"></path><path d="M5.6 8.1l1.6 1.6 3.2-3.3" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<p class="ctx">My soul needed that. Thank you, my heart is FULL!!!</p>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-0.png" alt=""><span class="hnd">Pagielee</span></div>
+<p class="ctx">You’re awesome. I’m 38 and I started running has a hobby this year. Then I started signing up for races and the feeling of getting that medal at the end was such and accomplishment. Running my 1st marathon this weekend in Long Beach then doing Every Women’s Marathon as my 2nd full marathon in November.</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>65</div>
+</div>
+<div class="cmt" style="margin-left: 10px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-2.png" alt=""><span class="hnd">May | Runner 🏃‍♀️</span></div>
+<p class="ctx">may this friendship find me 💗</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>649</div>
+</div>
+<div class="cmt" style="margin-left: 4px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-4.png" alt=""><span class="hnd">karlysmiles</span></div>
+<p class="ctx">Goals ........ can’t wait to run my first marathon. Rooting for you girly</p>
+</div>
+<div class="cmt" style="margin-left: 12px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-6.png" alt=""><span class="hnd">Aaron Deets</span></div>
+<p class="ctx">Needed this video today Donna! Thanks for sharing your content 💕</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 2px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-8.png" alt=""><span class="hnd">lindamjam</span></div>
+<p class="ctx">Thanks for the encouraging post! I had a hamstring minor tweak at week 4 which had set me back. I’m going for 15 this Sat🙏👌</p>
+</div>
+<div class="cmt" style="margin-left: 8px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-10.png" alt=""><span class="hnd">brea</span></div>
+<p class="ctx">wow this is the sweetest!</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>1</div>
+</div>
+<div class="cmt" style="margin-left: 6px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-12.png" alt=""><span class="hnd">Kat • Life in Japan🗾</span></div>
+<p class="ctx">This made me emotional ❤️</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-14.png" alt=""><span class="hnd">jillybeanrun1212</span></div>
+<p class="ctx">You’ve got this. It’s taper week so just do low key exercises and get lots of rest a couple days before 🥹👏</p>
+</div>
+<div class="cmt" style="margin-left: 14px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-16.png" alt=""><span class="hnd">e4trackandfield</span><svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="flex:none"><path d="M8 .9l1.8 1.5 2.3-.3.6 2.2 2 1.2-1 2.1 1 2.1-2 1.2-.6 2.2-2.3-.3L8 14.3l-1.8-1.5-2.3.3-.6-2.2-2-1.2 1-2.1-1-2.1 2-1.2.6-2.2 2.3.3z" fill="#3797F0"></path><path d="M5.6 8.1l1.6 1.6 3.2-3.3" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<p class="ctx">My soul needed that. Thank you, my heart is FULL!!!</p>
 </div>
 </div>
-
+<div class="track t2">
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-1.png" alt=""><span class="hnd">Denise Peralta</span></div>
+<p class="ctx">This is a beautiful journey you have with ur best friend! 🥹</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>265</div>
+</div>
+<div class="cmt" style="margin-left: 10px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-3.png" alt=""><span class="hnd">runwithjuules</span></div>
+<p class="ctx">Why am I crying?? You’re such an inspiration</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 4px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-5.png" alt=""><span class="hnd">TessaTok</span></div>
+<p class="ctx">Your friendship is so beautiful! Thank you for sharing 💕</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>13</div>
+</div>
+<div class="cmt" style="margin-left: 12px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-7.png" alt=""><span class="hnd">iamsamanthajones_</span></div>
+<p class="ctx">Your running journey, alongside a few others, actually inspired me to start my journey last summer!</p>
+</div>
+<div class="cmt" style="margin-left: 2px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-9.png" alt=""><span class="hnd">kena_sunshine</span></div>
+<p class="ctx">I love seeing these post. It’s nice seeing relatable ppl during marathon training 😂</p>
+</div>
+<div class="cmt" style="margin-left: 8px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-11.png" alt=""><span class="hnd">simplysollyyy</span></div>
+<p class="ctx">Thank you!!! Needed this today!!!! Was in the same boat.</p>
+</div>
+<div class="cmt" style="margin-left: 6px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-13.png" alt=""><span class="hnd">haileybug</span></div>
+<p class="ctx">YOU ARE INSPIRING!! I have been in a running rut and wish I had someone to push me but I know I can do it myself because of this ❤️❤️</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>1</div>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-15.png" alt=""><span class="hnd">byparkerhughes</span></div>
+<p class="ctx">SO relatable I love this so much!!! Blister baddies unite😂😭✨</p>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-1.png" alt=""><span class="hnd">Denise Peralta</span></div>
+<p class="ctx">This is a beautiful journey you have with ur best friend! 🥹</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>265</div>
+</div>
+<div class="cmt" style="margin-left: 10px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-3.png" alt=""><span class="hnd">runwithjuules</span></div>
+<p class="ctx">Why am I crying?? You’re such an inspiration</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>2</div>
+</div>
+<div class="cmt" style="margin-left: 4px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-5.png" alt=""><span class="hnd">TessaTok</span></div>
+<p class="ctx">Your friendship is so beautiful! Thank you for sharing 💕</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>13</div>
+</div>
+<div class="cmt" style="margin-left: 12px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-7.png" alt=""><span class="hnd">iamsamanthajones_</span></div>
+<p class="ctx">Your running journey, alongside a few others, actually inspired me to start my journey last summer!</p>
+</div>
+<div class="cmt" style="margin-left: 2px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-9.png" alt=""><span class="hnd">kena_sunshine</span></div>
+<p class="ctx">I love seeing these post. It’s nice seeing relatable ppl during marathon training 😂</p>
+</div>
+<div class="cmt" style="margin-left: 8px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-11.png" alt=""><span class="hnd">simplysollyyy</span></div>
+<p class="ctx">Thank you!!! Needed this today!!!! Was in the same boat.</p>
+</div>
+<div class="cmt" style="margin-left: 6px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-13.png" alt=""><span class="hnd">haileybug</span></div>
+<p class="ctx">YOU ARE INSPIRING!! I have been in a running rut and wish I had someone to push me but I know I can do it myself because of this ❤️❤️</p>
+<div class="clk"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14S1.6 10.2 1.6 5.9A3.4 3.4 0 0 1 8 4.2a3.4 3.4 0 0 1 6.4 1.7C14.4 10.2 8 14 8 14z" fill="none" stroke="#8A7F6E" stroke-width="1.4"></path></svg>1</div>
+</div>
+<div class="cmt" style="margin-left: 0px">
+<div class="chd"><img class="av" src="assets/live/ewm-av-15.png" alt=""><span class="hnd">byparkerhughes</span></div>
+<p class="ctx">SO relatable I love this so much!!! Blister baddies unite😂😭✨</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
+<div style="display: flex; justify-content: flex-end; margin-top: 64px">
+<a class="nxt" href="BobsFurniture.html">next &mdash; bob&rsquo;s furniture<svg width="24" height="10" viewBox="0 0 24 10" aria-hidden="true"><path d="M0 5h21M17 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"></path></svg></a>
 </div>
 
-<div style="background: #17140F; color: #EFEBE4; height: 229px">
-<div style="max-width: 1440px; margin: 0 auto; padding: 48px 32px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div>
-<div class="mono" style="color: #DDD6CA">Next client</div>
-<a class="disp" href="BobsFurniture.html" style="display: block; margin-top: 8px; font-size: clamp(40px, 8vw, 112px); line-height: 0.9; text-transform: uppercase; color: #C97B84; text-decoration: none">Bob’s Furniture</a>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; border-top: 1px solid #17140F; margin-top: 26px; padding-top: 24px">
+<span class="mono">&copy; orli rein 2026</span>
 </div>
 
 </div>
-<div style="max-width: 1440px; margin: 0 auto; padding: 0 32px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 32px"><span class="mono" style="color: #EFEBE4">© Orli Rein 2026</span><a href="index.html" style="color: #EFEBE4" class="mono">Back to all work ↑</a></div>
 </div>
 
 </body>
