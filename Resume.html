@@ -62,32 +62,39 @@ h1.name{font-size:62px}
 /* the pdf is generated from this stylesheet, so the page and the file stay in
    step. tuned to land on two sheets without shrinking the body text below
    something a recruiter can read on paper */
+/* the pdf is made by the visitor's browser from this stylesheet, so the page and
+   the file cannot drift apart. tuned to land on ONE Letter sheet: everything
+   below is about buying vertical space without dropping the body text to a size
+   nobody wants to read off paper */
 @media print{
-  @page{margin:12mm}
+  @page{margin:8mm 10mm}
   body{background:#EFEBE4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .top,.foot{display:none}
   .wrap{max-width:none;padding:0}
-  h1.name{font-size:40px;margin-top:0}
-  .tagline{font-size:12.5pt;margin-top:6px}
-  .contact{font-size:8.5pt;margin-top:10px;gap:4px 16px}
-  .sec{margin-top:16px;padding-top:10px}
-  .lbl{margin-bottom:10px;font-size:8pt}
-  .org+.org{margin-top:16px}
-  /* keep an org name with the first role under it, or "Freelance" strands
-     itself at the foot of a page */
-  .orghead{padding-bottom:7px;break-after:avoid}
-  .orghead h3{font-size:22px}
-  .orgmeta,.when,.clients{font-size:8pt}
-  .when{white-space:nowrap}
-  .role,.tools{grid-template-columns:152px minmax(0,1fr);gap:16px}
-  .role{padding:11px 0;break-inside:avoid}
+  h1.name{font-size:25px;margin-top:0;line-height:1}
+  .tagline{font-size:9.5pt;margin-top:3px;max-width:none}
+  .contact{font-size:7.8pt;margin-top:5px;gap:2px 14px}
+  .sec{margin-top:6px;padding-top:5px}
+  .lbl{margin-bottom:5px;font-size:7.2pt;letter-spacing:.1em}
+  .summary{max-width:none}
+  .org+.org{margin-top:6px}
+  /* keep an employer name with the first role under it */
+  .orghead{padding-bottom:3px;break-after:avoid}
+  .orghead h3{font-size:16px}
+  .orgmeta,.when,.clients{font-size:7.6pt}
+  .when{white-space:nowrap;padding-top:2px}
+  .clients{margin-top:2px}
+  .role,.tools{grid-template-columns:120px minmax(0,1fr);gap:14px}
+  .role{padding:3px 0;break-inside:avoid}
   .org,.sec{break-inside:auto}
-  .what h4{font-size:14px}
-  .what ul{margin-top:7px}
-  .what li{margin-top:4px;padding-left:15px}
-  .what li::before{top:8px;width:7px}
-  .summary,.what li,.what p.plainrole,.tools dd{font-size:9.5pt;line-height:1.4}
-  .award{font-size:8pt;margin-top:6px}
+  .what h4{font-size:11.5px}
+  .what ul{margin-top:3px}
+  .what li{margin-top:2px;padding-left:13px}
+  .what li::before{top:6px;width:6px}
+  .what p.plainrole{margin-top:3px}
+  .summary,.what li,.what p.plainrole,.tools dd{font-size:8.6pt;line-height:1.34}
+  .tools{gap:4px 12px}
+  .award{font-size:7.6pt;margin-top:4px}
 }
 </style>
 
