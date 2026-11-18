@@ -29,7 +29,9 @@ h1.name{margin:22px 0 0;font-size:96px;line-height:.9;text-transform:lowercase}
 .contact a{color:#4A433A;text-underline-offset:4px}
 .contact a:hover{color:#7A1F2B}
 .sec{margin-top:52px;padding-top:22px;border-top:1px solid #17140F}
-.lbl{margin:0 0 22px;font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.14em;color:#4A433A;font-weight:400;text-transform:lowercase}
+/* the section labels are the spine of the document, so they read as structure
+   rather than as the faintest thing on the page: full ink, wide tracking */
+.lbl{margin:0 0 22px;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.18em;color:#17140F;font-weight:500;text-transform:lowercase}
 .summary{margin:0;font-size:17px;line-height:1.6;max-width:72ch;color:#2A241B}
 .org{margin-top:4px}
 .org+.org{margin-top:38px}
@@ -40,7 +42,6 @@ h1.name{margin:22px 0 0;font-size:96px;line-height:.9;text-transform:lowercase}
 .role:last-child{border-bottom:0}
 .when{font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.05em;color:#4A433A;padding-top:5px}
 .what h4{margin:0;font-family:'Instrument Serif','DM Sans',serif;font-weight:400;font-style:italic;font-size:23px;line-height:1.15}
-.clients{margin:7px 0 0;font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.04em;color:#4A433A}
 .what ul{margin:12px 0 0;padding:0;list-style:none}
 .what li{position:relative;padding-left:20px;margin-top:9px;font-size:15.5px;line-height:1.55;color:#2A241B}
 .what li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:1px;background:#7A1F2B}
@@ -59,41 +60,37 @@ h1.name{font-size:62px}
 .orghead h3{font-size:28px}
 }
 @media (prefers-reduced-motion:reduce){.dl{transition:none}}
-/* the pdf is generated from this stylesheet, so the page and the file stay in
-   step. tuned to land on two sheets without shrinking the body text below
-   something a recruiter can read on paper */
 /* the pdf is made by the visitor's browser from this stylesheet, so the page and
-   the file cannot drift apart. tuned to land on ONE Letter sheet: everything
-   below is about buying vertical space without dropping the body text to a size
-   nobody wants to read off paper */
+   the file cannot drift apart. tuned to land on ONE Letter sheet, and to keep a
+   readable step between each level: name, section, employer, role, body */
 @media print{
   @page{margin:8mm 10mm}
   body{background:#EFEBE4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .top,.foot{display:none}
   .wrap{max-width:none;padding:0}
-  h1.name{font-size:25px;margin-top:0;line-height:1}
+  h1.name{font-size:32px;margin-top:0;line-height:1}
   .tagline{font-size:9.5pt;margin-top:3px;max-width:none}
   .contact{font-size:7.8pt;margin-top:5px;gap:2px 14px}
   .sec{margin-top:6px;padding-top:5px}
-  .lbl{margin-bottom:5px;font-size:7.2pt;letter-spacing:.1em}
+  .lbl{margin-bottom:5px;font-size:8pt;letter-spacing:.17em}
   .summary{max-width:none}
   .org+.org{margin-top:6px}
   /* keep an employer name with the first role under it */
   .orghead{padding-bottom:3px;break-after:avoid}
-  .orghead h3{font-size:16px}
-  .orgmeta,.when,.clients{font-size:7.6pt}
+  .orghead h3{font-size:17px}
+  .orgmeta,.when{font-size:7.6pt}
   .when{white-space:nowrap;padding-top:2px}
-  .clients{margin-top:2px}
-  .role,.tools{grid-template-columns:120px minmax(0,1fr);gap:14px}
+    .role,.tools{grid-template-columns:120px minmax(0,1fr);gap:14px}
   .role{padding:3px 0;break-inside:avoid}
   .org,.sec{break-inside:auto}
-  .what h4{font-size:11.5px}
+  .what h4{font-size:13.5px}
   .what ul{margin-top:3px}
   .what li{margin-top:2px;padding-left:13px}
   .what li::before{top:6px;width:6px}
   .what p.plainrole{margin-top:3px}
   .summary,.what li,.what p.plainrole,.tools dd{font-size:8.6pt;line-height:1.34}
   .tools{gap:4px 12px}
+  .tools dt{white-space:nowrap;font-size:7.2pt}
   .award{font-size:7.6pt;margin-top:4px}
 }
 </style>
@@ -173,14 +170,13 @@ save as pdf
 <div class="org">
 <div class="orghead">
 <h3>Freelance</h3>
-<span class="orgmeta">Aug 2021 &ndash; Jan 2024</span>
+<span class="orgmeta">Timex &middot; DKNY &middot; Women&rsquo;s Tennis Association &middot; Solana Labs</span>
 </div>
 
 <div class="role">
 <div class="when">Aug 2021 &ndash; Jan 2024</div>
 <div class="what">
 <h4>Creative Producer &amp; Project Manager</h4>
-<p class="clients">Clients: Timex, DKNY, Women&rsquo;s Tennis Association (WTA), Solana Labs</p>
 <ul>
 <li>Led development of Timex&rsquo;s bespoke Fortnite experience and Bored Ape Yacht Club &ldquo;phygital&rdquo; watch collaboration, contributing to 3.2B+ earned impressions and widespread media recognition.</li>
 <li>Ideated and developed DKNY&rsquo;s Metaverse Fashion Week presence, aligning gamified creative with the Spring 2023 collection and contributing to nearly 1B impressions over three days.</li>
@@ -194,24 +190,35 @@ save as pdf
 
 <section class="sec">
 <h2 class="lbl">earlier experience</h2>
+<div class="org">
+<div class="orghead">
+<h3>Modern Luxury, Hamptons Magazine</h3>
+<span class="orgmeta">Southampton, NY</span>
+</div>
 <div class="role">
 <div class="when">Jun 2021 &ndash; Aug 2021</div>
 <div class="what">
-<h4>Marketing Summer Associate &mdash; Modern Luxury, Hamptons Magazine</h4>
-<p class="clients">Southampton, NY</p>
+<h4>Marketing Summer Associate</h4>
 <p class="plainrole">Pitched and implemented social strategies and coordinated events with sponsors including Valentino, Alo, and Eres.</p>
+</div>
 </div>
 </div>
 </section>
 
 <section class="sec">
 <h2 class="lbl">education</h2>
+<div class="org">
+<div class="orghead">
+<h3>Syracuse University</h3>
+<span class="orgmeta">S.I. Newhouse School of Public Communications &middot; Syracuse, NY</span>
+</div>
 <div class="role">
-<div class="when">Syracuse, NY</div>
+<div class="when"></div>
 <div class="what">
-<h4>Syracuse University, S.I. Newhouse School of Public Communications</h4>
-<p class="plainrole">B.S., Television, Radio and Film &middot; Double minor: Business; Information Management and Technology</p>
+<h4>B.S., Television, Radio and Film</h4>
+<p class="plainrole">Double minor: Business; Information Management and Technology</p>
 <p class="award">American Advertising Federation Regional Competition Winner</p>
+</div>
 </div>
 </div>
 </section>
