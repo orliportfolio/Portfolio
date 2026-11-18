@@ -2,66 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Orli Rein, resume</title>
-<meta name="description" content="Orli Rein's resume is mid-makeover.">
-<meta name="theme-color" content="#EFEBE4">
-<meta name="robots" content="noindex">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-*{text-transform:lowercase}
-html,body{margin:0;min-height:100%}
-body{background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
-  min-height:100dvh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;
-  padding:max(44px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom))}
-.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:#EFEBE4;color:#17140F;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+a{color:#17140F}a:hover{color:#7A1F2B}
+img{max-width:100%}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em}
 .disp{font-family:'Instrument Serif','DM Sans',sans-serif;font-weight:400;letter-spacing:-.02em}
-.wrap{max-width:1440px;width:100%;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between;flex:1}
-.mid{flex:1;display:flex;flex-direction:column;justify-content:center}
-h1{margin:0;font-size:clamp(52px,15vw,120px);line-height:.88;font-style:italic;overflow-wrap:break-word}
-.acts{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;
-  text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;cursor:pointer}
-.solid{background:#17140F;color:#EFEBE4;border:1px solid #17140F}
-.solid:hover,.solid:focus-visible{background:#7A1F2B;border-color:#7A1F2B;outline:none}
-.ghost{background:transparent;color:#17140F;border:1px solid #17140F}
-.ghost:hover,.ghost:focus-visible{background:#7A1F2B;border-color:#7A1F2B;color:#F4EFE6;outline:none}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#17140F;padding-top:24px}
-.foot a{color:#17140F}
-.foot a:hover{color:#7A1F2B}
+/* the site runs lowercase, and that voice is kept for the page's own chrome.
+   the resume's content holds its real casing: acronyms, brand names and job
+   titles lose meaning flattened, and a recruiter reads it as a typo */
+.lower{text-transform:lowercase}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 32px 72px;box-sizing:border-box}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;margin-left:-20px;font-size:14px;text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:lowercase}
+.dl{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px;border:1px solid #17140F;border-radius:999px;text-decoration:none;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:lowercase;background:transparent;transition:background .2s ease,color .2s ease}
+.dl:hover{background:#7A1F2B;color:#F4EFE6;border-color:#7A1F2B}
+h1.name{margin:22px 0 0;font-size:96px;line-height:.9;text-transform:lowercase}
+.tagline{margin:14px 0 0;font-size:19px;line-height:1.4;max-width:46ch}
+.contact{margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px 22px;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#4A433A}
+.contact a{color:#4A433A;text-underline-offset:4px}
+.contact a:hover{color:#7A1F2B}
+.sec{margin-top:52px;padding-top:22px;border-top:1px solid #17140F}
+.lbl{margin:0 0 22px;font-family:'DM Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.14em;color:#4A433A;font-weight:400;text-transform:lowercase}
+.summary{margin:0;font-size:17px;line-height:1.6;max-width:72ch;color:#2A241B}
+.org{margin-top:4px}
+.org+.org{margin-top:38px}
+.orghead{display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid rgba(23,20,15,.18)}
+.orghead h3{margin:0;font-family:'Instrument Serif','DM Sans',serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.01em}
+.orgmeta{font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.05em;color:#4A433A}
+.role{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;padding:20px 0;border-bottom:1px solid rgba(23,20,15,.1)}
+.role:last-child{border-bottom:0}
+.when{font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.05em;color:#4A433A;padding-top:5px}
+.what h4{margin:0;font-family:'Instrument Serif','DM Sans',serif;font-weight:400;font-style:italic;font-size:23px;line-height:1.15}
+.clients{margin:7px 0 0;font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.04em;color:#4A433A}
+.what ul{margin:12px 0 0;padding:0;list-style:none}
+.what li{position:relative;padding-left:20px;margin-top:9px;font-size:15.5px;line-height:1.55;color:#2A241B}
+.what li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:1px;background:#7A1F2B}
+.what p.plainrole{margin:12px 0 0;font-size:15.5px;line-height:1.55;color:#2A241B}
+.tools{display:grid;grid-template-columns:200px minmax(0,1fr);gap:10px 28px}
+.tools dt{font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.05em;color:#4A433A;padding-top:3px}
+.tools dd{margin:0;font-size:15.5px;line-height:1.55;color:#2A241B}
+.award{margin:10px 0 0;font-family:'DM Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.05em;color:#7A1F2B}
+.foot{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;border-top:1px solid #17140F;margin-top:52px;padding-top:22px;text-transform:lowercase}
+.foot a{text-underline-offset:4px}
+@media (max-width:820px){
+.wrap{padding-left:20px;padding-right:20px}
+h1.name{font-size:62px}
+.role,.tools{grid-template-columns:minmax(0,1fr);gap:8px}
+.when{padding-top:0}
+.orghead h3{font-size:28px}
+}
+@media (prefers-reduced-motion:reduce){.dl{transition:none}}
+/* the pdf is generated from this stylesheet, so the page and the file stay in
+   step. tuned to land on two sheets without shrinking the body text below
+   something a recruiter can read on paper */
+@media print{
+  @page{margin:12mm}
+  body{background:#EFEBE4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .top,.foot{display:none}
+  .wrap{max-width:none;padding:0}
+  h1.name{font-size:40px;margin-top:0}
+  .tagline{font-size:12.5pt;margin-top:6px}
+  .contact{font-size:8.5pt;margin-top:10px;gap:4px 16px}
+  .sec{margin-top:16px;padding-top:10px}
+  .lbl{margin-bottom:10px;font-size:8pt}
+  .org+.org{margin-top:16px}
+  /* keep an org name with the first role under it, or "Freelance" strands
+     itself at the foot of a page */
+  .orghead{padding-bottom:7px;break-after:avoid}
+  .orghead h3{font-size:22px}
+  .orgmeta,.when,.clients{font-size:8pt}
+  .when{white-space:nowrap}
+  .role,.tools{grid-template-columns:152px minmax(0,1fr);gap:16px}
+  .role{padding:11px 0;break-inside:avoid}
+  .org,.sec{break-inside:auto}
+  .what h4{font-size:14px}
+  .what ul{margin-top:7px}
+  .what li{margin-top:4px;padding-left:15px}
+  .what li::before{top:8px;width:7px}
+  .summary,.what li,.what p.plainrole,.tools dd{font-size:9.5pt;line-height:1.4}
+  .award{font-size:8pt;margin-top:6px}
+}
 </style>
+
 </head>
 <body>
+
+<div style="border-top: 1px solid #17140F">
 <div class="wrap">
 
-<div class="mid">
-<h1 class="disp">mid&#8209;<br>makeover</h1>
+<div class="top">
+<a class="back" href="index.html">&larr; orli rein</a>
+<button class="dl" type="button" id="pdf">
+<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v9M4.5 7L8 10.5 11.5 7M2 13.5h12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+save as pdf
+</button>
+</div>
 
-<div class="acts">
-<a class="btn solid" id="back" href="index.html">
-<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg>
-back to the work
-</a>
-<a class="btn ghost" href="mailto:orlirein8@gmail.com">email me
-<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6"></path><path d="M5.5 5H11v5.5"></path></svg>
-</a>
+<h1 class="name disp">orli rein</h1>
+<p class="tagline disp" style="font-style: italic">Creative Producer &mdash; branded content, experiential &amp; social</p>
+
+<div class="contact">
+<span>New York, NY</span>
+<a href="tel:+19174553482">(917) 455-3482</a>
+<a href="mailto:orlirein8@gmail.com">orlirein8@gmail.com</a>
+<a href="https://www.linkedin.com/in/orlirein">linkedin.com/in/orlirein</a>
+</div>
+
+<section class="sec">
+<h2 class="lbl">summary</h2>
+<p class="summary">Experienced integrated creative producer with a track record of producing impactful storytelling and branded content for leading brands including Don Julio, Subway, and MilkPEP. Brings a social-first lens, cultural fluency, and AI-enabled workflows to every production.</p>
+</section>
+
+<section class="sec">
+<h2 class="lbl">experience</h2>
+
+<div class="org">
+<div class="orghead">
+<h3>GALE</h3>
+<span class="orgmeta">New York, NY &middot; Jan 2024 &ndash; Present</span>
+</div>
+
+<div class="role">
+<div class="when">Mar 2026 &ndash; Present</div>
+<div class="what">
+<h4>Creative Producer</h4>
+<ul>
+<li>Lead social-first, experiential, and branded content productions for Don Julio, Subway, MilkPEP, Cotton, and other accounts, managing budgets up to $3M and teams of up to 30 from pre-production through post.</li>
+<li>Produce content around tentpole moments, including the Met Gala, FIFA World Cup, and Paris Olympics, and react in real time to cultural moments like Bravo&rsquo;s Summer House, turning conversations into branded content and experiences.</li>
+<li>Adapt creative and production approaches across lean editorial shoots and large-scale campaigns for luxury, lifestyle, sports, and meme-driven audiences.</li>
+</ul>
 </div>
 </div>
+
+<div class="role">
+<div class="when">Jan 2025 &ndash; Present</div>
+<div class="what">
+<h4>Head of Studio</h4>
+<ul>
+<li>Pitched and secured a $100K initial budget from GALE&rsquo;s CEO and CFO to launch the agency&rsquo;s first content studio, leading its cross-functional buildout and expansion to two additional offices.</li>
+<li>Built the studio into a flexible content resource supporting photo, video, podcast/audio, and AI-enabled work across GALE&rsquo;s client portfolio, fielding 85+ studio requests since March 2025 and generating nearly $200K in value.</li>
+<li>Automated studio operations with AI, including budget tracking and inventory management, while piloting the workflow as a scalable tool for production operations beyond the studio.</li>
+</ul>
+</div>
+</div>
+
+<div class="role">
+<div class="when">Jan 2024 &ndash; Mar 2026</div>
+<div class="what">
+<h4>Video Editor / Social Producer</h4>
+<p class="plainrole">Social-first editor and content creator focused on platform-native storytelling and social strategy; helped establish a new function at GALE that expanded to a team of four before transitioning full-time to production.</p>
+</div>
+</div>
+
+</div>
+
+<div class="org">
+<div class="orghead">
+<h3>Freelance</h3>
+<span class="orgmeta">Aug 2021 &ndash; Jan 2024</span>
+</div>
+
+<div class="role">
+<div class="when">Aug 2021 &ndash; Jan 2024</div>
+<div class="what">
+<h4>Creative Producer &amp; Project Manager</h4>
+<p class="clients">Clients: Timex, DKNY, Women&rsquo;s Tennis Association (WTA), Solana Labs</p>
+<ul>
+<li>Led development of Timex&rsquo;s bespoke Fortnite experience and Bored Ape Yacht Club &ldquo;phygital&rdquo; watch collaboration, contributing to 3.2B+ earned impressions and widespread media recognition.</li>
+<li>Ideated and developed DKNY&rsquo;s Metaverse Fashion Week presence, aligning gamified creative with the Spring 2023 collection and contributing to nearly 1B impressions over three days.</li>
+<li>Created WTA social video content, including behind-the-scenes features, athlete profiles, and tournament highlights.</li>
+</ul>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="sec">
+<h2 class="lbl">earlier experience</h2>
+<div class="role">
+<div class="when">Jun 2021 &ndash; Aug 2021</div>
+<div class="what">
+<h4>Marketing Summer Associate &mdash; Modern Luxury, Hamptons Magazine</h4>
+<p class="clients">Southampton, NY</p>
+<p class="plainrole">Pitched and implemented social strategies and coordinated events with sponsors including Valentino, Alo, and Eres.</p>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<h2 class="lbl">education</h2>
+<div class="role">
+<div class="when">Syracuse, NY</div>
+<div class="what">
+<h4>Syracuse University, S.I. Newhouse School of Public Communications</h4>
+<p class="plainrole">B.S., Television, Radio and Film &middot; Double minor: Business; Information Management and Technology</p>
+<p class="award">American Advertising Federation Regional Competition Winner</p>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<h2 class="lbl">tools</h2>
+<dl class="tools">
+<dt>Production &amp; design</dt>
+<dd>Adobe Creative Suite (Premiere, Photoshop, InDesign), Figma, CapCut, Frame.io</dd>
+<dt>AI</dt>
+<dd>Weavy (Runway, Firefly, Veo, Kling, Gemini), ElevenLabs</dd>
+</dl>
+</section>
 
 <div class="mono foot">
 <span>&copy; orli rein 2026</span>
-<span><a href="https://www.linkedin.com/in/orlirein" target="_blank" rel="noopener">linkedin</a></span>
+<span><a href="mailto:orlirein8@gmail.com">email</a></span>
 </div>
 
+</div>
 </div>
 
 <script>
-/* go back where they came from; the href is the fallback */
-document.getElementById('back').addEventListener('click', function (e) {
-  if (document.referrer && history.length > 1) { e.preventDefault(); history.back(); }
-});
+/* the pdf is made by the visitor's own browser rather than shipped as a file,
+   so it always matches this page and renders in the real webfonts */
+document.getElementById('pdf').addEventListener('click', function () { window.print(); });
 </script>
+
 </body>
 </html>
